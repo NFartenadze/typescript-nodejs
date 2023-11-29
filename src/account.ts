@@ -1,22 +1,26 @@
 import { WithDraw } from "./withdraw";
 import { Deposit } from "./deposit";
+
 class Account {
-  private balance: number;
+  balance: number;
+  transactionHistory: Array<WithDraw | Deposit> = [];
 
   constructor(balance = 0) {
     this.balance = balance;
   }
 
-  deposit({ amount }: Deposit) {
-    this.addAmount(amount);
+  deposit(deposit: Deposit) {
+    this.addAmount(deposit.amount);
+    this.transactionHistory.push(deposit);
   }
 
-  withdraw({ amount }: WithDraw) {
-    const checkAmountToBalance = amount > this.balance;
+  withdraw(withdraw: WithDraw) {
+    const checkAmountToBalance = withdraw.amount > this.balance;
     if (checkAmountToBalance) {
       throw new Error("Not Enough Money On Balance");
     }
-    this.reduceAmount(amount);
+    this.reduceAmount(withdraw.amount);
+    this.transactionHistory.push(withdraw);
   }
 
   addAmount(amount: number) {
@@ -27,3 +31,5 @@ class Account {
     this.balance -= amount;
   }
 }
+
+export { Account };

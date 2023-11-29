@@ -27,6 +27,7 @@
     "typescript": "^5.3.2"
   },
   "dependencies": {
+    "mongodb": "^6.3.0",
     "ts-node-dev": "^2.0.0"
   }
 }

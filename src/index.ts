@@ -1,6 +1,5 @@
 import http from "http";
-import { acc } from "./run";
-import { exampleUsage } from "./services/connection";
+import { acc } from "./main";
 
 // import { main } from "./services/connection";
 
@@ -17,4 +16,3 @@ server.listen(3000, () => {
   console.log("Server is running on http://localhost:3000/");
 });
 
-exampleUsage().catch(console.error);

@@ -1,11 +1,21 @@
 import { WithDraw } from "./withdraw";
 import { Deposit } from "./deposit";
 
-class Account {
+interface IAccount {
+  firstName: string;
+  lastName: string;
+  balance: number;
+  transactionHistory: Array<WithDraw | Deposit>;
+}
+class Account implements IAccount {
+  firstName: string;
+  lastName: string;
   balance: number;
   transactionHistory: Array<WithDraw | Deposit> = [];
 
-  constructor(balance = 0) {
+  constructor(firstName: string, lastName: string, balance = 0) {
+    this.firstName = firstName;
+    this.lastName = lastName;
     this.balance = balance;
   }
 

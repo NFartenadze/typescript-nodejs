@@ -5,9 +5,9 @@ import { User } from "./user";
 import { WithDraw } from "./withdraw";
 
 class Bank {
-  private accounts: Array<Account> = [];
-  private users: Array<User> = [];
-  private transactions: Array<Transaction> = [];
+  accounts: Array<Account> = [];
+  users: Array<User> = [];
+  transactions: Array<Transaction> = [];
 
   createUser(user: User): void {
     this.users.push(user);
@@ -41,14 +41,14 @@ class Bank {
         console.log(
           `Deposit of ${
             transaction.amount
-          } successful. New balance: ${account.getBalance()}`
+          } successful. New balance: ${account.checkBalance()}`
         );
       } else if (transaction.type === "withdraw") {
         account.withdraw(new WithDraw(transaction.amount));
         console.log(
           `Withdrawal of ${
             transaction.amount
-          } successful. New balance: ${account.getBalance()}`
+          } successful. New balance: ${account.checkBalance()}`
         );
       } else {
         console.log("Invalid transaction type");
@@ -69,7 +69,7 @@ class Bank {
       return;
     }
 
-    const balance = account.getBalance();
+    const balance = account.checkBalance();
     console.log(`Account balance: ${balance}`);
   }
 }

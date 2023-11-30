@@ -1,18 +1,15 @@
-import http from "http";
-import { acc } from "./main";
+import express from "express";
+import { main } from "./main";
 
-// import { main } from "./services/connection";
+const app = express();
+const port = 3000;
 
-export const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-type": "application/json" });
-  res.end(
-    JSON.stringify({
-      data: acc,
-    })
-  );
+app.get("/", (req, res) => {
+  res.send("Hello");
 });
 
-server.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000/");
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
 });
 
+main();

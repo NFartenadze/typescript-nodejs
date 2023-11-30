@@ -2,12 +2,7 @@ import { WithDraw } from "./withdraw";
 import { Deposit } from "./deposit";
 import { User } from "./user";
 
-interface IAccount {
-  owner: User;
-  balance: number;
-  // transactionHistory: Array<WithDraw | Deposit>;
-}
-class Account implements IAccount {
+class Account {
   owner: User;
   balance: number;
   // transactionHistory: Array<WithDraw | Deposit> = [];
@@ -31,7 +26,7 @@ class Account implements IAccount {
     console.log(`Withdrawn ${withdraw.amount}. New balance: ${this.balance}`);
     // this.transactionHistory.push(withdraw);
   }
-  getBalance(): number {
+  checkBalance(): number {
     return this.balance;
   }
 }

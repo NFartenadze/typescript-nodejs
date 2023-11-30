@@ -1,7 +1,8 @@
 class User {
-  private id: string;
-  private name: string;
-  private contactInfo: string;
+  id: string;
+  name: string;
+  contactInfo: string;
+
   constructor(id: string, name: string, contactInfo: string) {
     this.id = id;
     this.name = name;

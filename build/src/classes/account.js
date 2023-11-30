@@ -22,7 +22,7 @@ class Account {
         console.log(`Withdrawn ${withdraw.amount}. New balance: ${this.balance}`);
         // this.transactionHistory.push(withdraw);
     }
-    getBalance() {
+    checkBalance() {
         return this.balance;
     }
 }

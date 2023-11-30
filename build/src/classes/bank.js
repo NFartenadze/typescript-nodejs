@@ -33,11 +33,11 @@ class Bank {
         try {
             if (transaction.type === "deposit") {
                 account.deposit(new deposit_1.Deposit(transaction.amount));
-                console.log(`Deposit of ${transaction.amount} successful. New balance: ${account.getBalance()}`);
+                console.log(`Deposit of ${transaction.amount} successful. New balance: ${account.checkBalance()}`);
             }
             else if (transaction.type === "withdraw") {
                 account.withdraw(new withdraw_1.WithDraw(transaction.amount));
-                console.log(`Withdrawal of ${transaction.amount} successful. New balance: ${account.getBalance()}`);
+                console.log(`Withdrawal of ${transaction.amount} successful. New balance: ${account.checkBalance()}`);
             }
             else {
                 console.log("Invalid transaction type");
@@ -54,7 +54,7 @@ class Bank {
             console.log("Account not found");
             return;
         }
-        const balance = account.getBalance();
+        const balance = account.checkBalance();
         console.log(`Account balance: ${balance}`);
     }
 }

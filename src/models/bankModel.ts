@@ -1,15 +1,18 @@
 import { Schema, model } from "mongoose";
+import { Account } from "../classes/account";
+import { User } from "../classes/user";
+import { Transaction } from "../classes/transaction";
 
 interface IBank {
-  id: string;
-  name: string;
-  contactInfo: string;
+  accounts: Array<Account>;
+  users: Array<User>;
+  transactions: Array<Transaction>;
 }
 
 const bankSchema = new Schema<IBank>({
-  id: { type: String, required: true },
-  name: { type: String, required: true },
-  contactInfo: { type: String, required: true },
+  accounts: { type: [Account], required: true },
+  users: { type: [User], required: true },
+  transactions: { type: [Transaction], required: true },
 });
 
 const Bank = model<IBank>("Bank", bankSchema);

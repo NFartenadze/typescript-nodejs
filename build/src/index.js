@@ -30,14 +30,29 @@ const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 // import { main } from "./main";
 const dotenv = __importStar(require("dotenv"));
+const userModel_1 = require("./models/userModel");
 const app = (0, express_1.default)();
 const port = 3000;
 app.use(express_1.default.json());
 app.get("/", (req, res) => {
     res.send("Hello");
 });
-app.post("/user", (req, res) => {
+// get users from database
+app.get("/users", async (req, res) => {
     try {
+        const users = await userModel_1.User.find({});
+        res.status(200).json(users);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.message });
+    }
+});
+//insert user to database
+app.post("/users", async (req, res) => {
+    try {
+        const user = await userModel_1.User.create(req.body);
+        res.status(200).json(user);
     }
     catch (error) {
         console.log(error);

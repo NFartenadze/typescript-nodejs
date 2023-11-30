@@ -5,8 +5,6 @@ import {
   UpdateResult,
   DeleteResult,
 } from "mongodb";
-import { WithDraw } from "../withdraw";
-import { Deposit } from "../deposit";
 
 const uri =
   "mongodb+srv://farnick1148:o1vvfQtCYh4ehKJK@cluster0.d9r34ci.mongodb.net/?retryWrites=true&w=majority";

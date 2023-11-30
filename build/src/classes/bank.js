@@ -9,7 +9,7 @@ class Bank {
     transactions = [];
     createUser(user) {
         this.users.push(user);
-        console.log(`User created with ID ${user.userId}`);
+        console.log(`User created with name ${user.name}`);
     }
     createAccount(account) {
         if (!this.users.includes(account.owner)) {

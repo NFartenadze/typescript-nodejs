@@ -3,11 +3,13 @@ import mongoose from "mongoose";
 // import { main } from "./main";
 import * as dotenv from "dotenv";
 import { User } from "./models/userModel";
+import { User as UserClass } from "./classes/user";
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("Hello");
 });
@@ -49,3 +51,10 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+
+async function addUser() {
+  const user = await User.create(new UserClass("bob", "california"));
+  console.log("added user");
+}
+
+addUser();

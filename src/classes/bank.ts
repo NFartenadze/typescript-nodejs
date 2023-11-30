@@ -11,7 +11,7 @@ class Bank {
 
   createUser(user: User): void {
     this.users.push(user);
-    console.log(`User created with ID ${user.userId}`);
+    console.log(`User created with name ${user.name}`);
   }
 
   createAccount(account: Account): void {

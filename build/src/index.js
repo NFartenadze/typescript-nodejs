@@ -31,6 +31,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 // import { main } from "./main";
 const dotenv = __importStar(require("dotenv"));
 const userModel_1 = require("./models/userModel");
+const user_1 = require("./classes/user");
 const app = (0, express_1.default)();
 const port = 3000;
 app.use(express_1.default.json());
@@ -72,4 +73,9 @@ mongoose_1.default
     .catch((error) => {
     console.log(error);
 });
+async function addUser() {
+    const user = await userModel_1.User.create(new user_1.User("bob", "california"));
+    console.log("added user");
+}
+addUser();
 //# sourceMappingURL=index.js.map

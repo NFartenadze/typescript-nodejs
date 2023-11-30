@@ -6,10 +6,10 @@ import {
   DeleteResult,
 } from "mongodb";
 
-const uri =
-  "mongodb+srv://farnick1148:o1vvfQtCYh4ehKJK@cluster0.d9r34ci.mongodb.net/?retryWrites=true&w=majority";
+import * as dotenv from "dotenv";
+dotenv.config();
 
-const client = new MongoClient(uri);
+const client = new MongoClient(process.env.MONGODB_URI!);
 
 export async function connectToMongoDB(): Promise<MongoClient> {
   await client.connect();
@@ -25,6 +25,7 @@ export async function insertData(
   collection: Collection,
   data: Record<string, any>
 ): Promise<InsertOneResult> {
+  console.log("Added data");
   return collection.insertOne(data);
 }
 

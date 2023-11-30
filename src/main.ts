@@ -1,12 +1,22 @@
-import { connectToMongoDB, disconnectFromMongoDB } from "./services/connection";
+import {
+  connectToMongoDB,
+  disconnectFromMongoDB,
+  insertData,
+} from "./services/connection";
 
-// async function main() {
-//   const client = await connectToMongoDB();
-//   const database = client.db("banking-system");
-//   const collection = database.collection("accounts");
+import * as dotenv from "dotenv";
+dotenv.config();
+export async function main() {
+  const client = await connectToMongoDB();
+  const database = client.db("banking-system");
+  const collection = database.collection("accounts");
 
-//   await disconnectFromMongoDB();
-// }
+  await insertData(collection, {
+    example: "exampple",
+  });
+
+  await disconnectFromMongoDB();
+}
 
 import { User } from "./classes/user";
 import { Account } from "./classes/account";
@@ -25,7 +35,7 @@ const account2 = new Account(user2, 500); // Initial balance: $500
 
 // Create users and accounts in the bank
 bank.createUser(user1);
-bank.createAccount( account1);
+bank.createAccount(account1);
 
 bank.createUser(user2);
 bank.createAccount(account2);

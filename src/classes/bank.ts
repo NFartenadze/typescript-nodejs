@@ -1,12 +1,10 @@
 import { Account } from "./account";
-import { Deposit } from "./deposit";
-import { Transaction } from "./transaction";
 import { User } from "./user";
-import { WithDraw } from "./withdraw";
 
 class Bank {
   accounts: Array<Account> = [];
   users: Array<User> = [];
+
   createUser(user: User): void {
     this.users.push(user);
     console.log(`User created with name ${user.name}`);

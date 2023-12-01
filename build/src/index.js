@@ -70,4 +70,5 @@ mongoose_1.default
     console.log(error);
 });
 (0, userService_1.getUsers)();
+(0, userService_1.updateUser)("65696494d30ffcdaafed1353", "john");
 //# sourceMappingURL=index.js.map

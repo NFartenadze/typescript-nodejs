@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 // import { main } from "./main";
 import * as dotenv from "dotenv";
 import { User as UserClass } from "./classes/user";
-import { getUsers } from "./services/userService";
+import { getUsers, updateUser } from "./services/userService";
 
 // const app = express();
 // const port = 3000;
@@ -53,3 +53,4 @@ mongoose
   });
 
 getUsers();
+updateUser("65696494d30ffcdaafed1353", "john");

@@ -3,9 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountModel = void 0;
 const mongoose_1 = require("mongoose");
 const user_1 = require("../classes/user");
+const transaction_1 = require("../classes/transaction");
 const accountSchema = new mongoose_1.Schema({
     owner: { type: user_1.User, required: true },
     balance: { type: Number, required: true },
+    transactionHistory: { type: [transaction_1.Transaction], required: true },
 }, {
     collection: "accounts",
 });

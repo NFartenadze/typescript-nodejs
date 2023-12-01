@@ -26,56 +26,48 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 // import { main } from "./main";
 const dotenv = __importStar(require("dotenv"));
-const userModel_1 = require("./models/userModel");
-const user_1 = require("./classes/user");
-const app = (0, express_1.default)();
-const port = 3000;
-app.use(express_1.default.json());
-app.get("/", (req, res) => {
-    res.send("Hello");
-});
+const userService_1 = require("./services/userService");
+// const app = express();
+// const port = 3000;
+// app.use(express.json());
+// app.get("/", (req, res) => {
+//   res.send("Hello");
+// });
 // get users from database
-app.get("/users", async (req, res) => {
-    try {
-        const users = await userModel_1.User.find({});
-        res.status(200).json(users);
-    }
-    catch (error) {
-        console.log(error);
-        res.status(500).json({ message: error.message });
-    }
-});
-//insert user to database
-app.post("/users", async (req, res) => {
-    try {
-        const user = await userModel_1.User.create(req.body);
-        res.status(200).json(user);
-    }
-    catch (error) {
-        console.log(error);
-        res.status(500).json({ message: error.message });
-    }
-});
+// app.get("/users", async (req, res) => {
+//   try {
+//     const users = await User.find({});
+//     res.status(200).json(users);
+//   } catch (error: any) {
+//     console.log(error);
+//     res.status(500).json({ message: error.message });
+//   }
+// });
+// //insert user to database
+// app.post("/users", async (req, res) => {
+//   try {
+//     const user = await User.create(req.body);
+//     res.status(200).json(user);
+//   } catch (error: any) {
+//     console.log(error);
+//     res.status(500).json({ message: error.message });
+//   }
+// });
 // main();
 dotenv.config();
 mongoose_1.default
     .connect(process.env.MONGODB_URI)
     .then(() => {
     console.log("Connected to MongoDb");
-    app.listen(port, () => {
-        console.log(`Server is running at http://localhost:${port}`);
-    });
+    // app.listen(port, () => {
+    //   console.log(`Server is running at http://localhost:${port}`);
+    // });
 })
     .catch((error) => {
     console.log(error);
 });
-async function addUser() {
-    const user = await userModel_1.User.create(new user_1.User("bob", "california"));
-    console.log("added user");
-}
-addUser();
+(0, userService_1.getUsers)();
 //# sourceMappingURL=index.js.map

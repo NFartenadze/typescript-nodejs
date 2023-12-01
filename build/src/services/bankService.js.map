@@ -1,0 +1,1 @@
+{"version":3,"file":"bankService.js","sourceRoot":"","sources":["../../../src/services/bankService.ts"],"names":[],"mappings":";;;AAAA,0CAAuC;AACvC,mDAAgD;AAEzC,KAAK,UAAU,OAAO;IAC3B,MAAM,IAAI,GAAG,MAAM,qBAAS,CAAC,MAAM,CAAC,IAAI,WAAI,EAAE,CAAC,CAAC;IAChD,OAAO,CAAC,GAAG,CAAC,YAAY,CAAC,CAAC;AAC5B,CAAC;AAHD,0BAGC"}

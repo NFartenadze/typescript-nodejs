@@ -27,48 +27,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-// import { main } from "./main";
 const dotenv = __importStar(require("dotenv"));
-const userService_1 = require("./services/userService");
-// const app = express();
-// const port = 3000;
-// app.use(express.json());
-// app.get("/", (req, res) => {
-//   res.send("Hello");
-// });
-// get users from database
-// app.get("/users", async (req, res) => {
-//   try {
-//     const users = await User.find({});
-//     res.status(200).json(users);
-//   } catch (error: any) {
-//     console.log(error);
-//     res.status(500).json({ message: error.message });
-//   }
-// });
-// //insert user to database
-// app.post("/users", async (req, res) => {
-//   try {
-//     const user = await User.create(req.body);
-//     res.status(200).json(user);
-//   } catch (error: any) {
-//     console.log(error);
-//     res.status(500).json({ message: error.message });
-//   }
-// });
-// main();
+const bank_1 = require("./classes/bank");
+const user_1 = require("./classes/user");
 dotenv.config();
 mongoose_1.default
     .connect(process.env.MONGODB_URI)
     .then(() => {
     console.log("Connected to MongoDb");
-    // app.listen(port, () => {
-    //   console.log(`Server is running at http://localhost:${port}`);
-    // });
+    const bank = new bank_1.Bank("Example");
+    bank.createUser(new user_1.User("billy", "something"));
+    console.log(bank.users);
 })
     .catch((error) => {
     console.log(error);
 });
-(0, userService_1.getUsers)();
-(0, userService_1.updateUser)("65696494d30ffcdaafed1353", "john");
 //# sourceMappingURL=index.js.map

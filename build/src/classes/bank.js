@@ -2,8 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Bank = void 0;
 class Bank {
+    name;
     accounts = [];
     users = [];
+    constructor(name) {
+        this.name = name;
+    }
     createUser(user) {
         this.users.push(user);
         console.log(`User created with name ${user.name}`);

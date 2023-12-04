@@ -5,6 +5,7 @@ const mongoose_1 = require("mongoose");
 const account_1 = require("../classes/account");
 const user_1 = require("../classes/user");
 const bankSchema = new mongoose_1.Schema({
+    name: { type: String, required: true },
     accounts: { type: [account_1.Account], required: true },
     users: { type: [user_1.User], required: true },
 }, {

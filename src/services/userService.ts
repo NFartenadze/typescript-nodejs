@@ -67,16 +67,16 @@ export async function deleteUserById(userId: string) {
   }
 }
 
-export async function deleteUser(query: Record<keyof User, string>) {
+export async function deleteUser(field: Record<keyof User, string>) {
   try {
-    const user = await UserModel.findOne(query);
+    const user = await UserModel.findOne(field);
 
     if (!user) {
-      console.log(`User with ${query} not found`);
+      console.log(`User with ${field} not found`);
       return;
     }
-    await UserModel.deleteOne(query);
-    console.log(`deleted user with ${query}`);
+    await UserModel.deleteOne(field);
+    console.log(`deleted user with ${field}`);
   } catch (error: any) {
     console.log(error, { message: error.message });
   }

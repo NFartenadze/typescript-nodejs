@@ -52,16 +52,16 @@ export async function updateAccount(
   }
 }
 
-export async function deleteAccount(query: Record<keyof Account, any>) {
+export async function deleteAccount(field: Record<keyof Account, any>) {
   try {
-    const account = await AccountModel.findOne(query);
+    const account = await AccountModel.findOne(field);
 
     if (!account) {
-      console.log(`Account with ${query} not found`);
+      console.log(`Account with ${field} not found`);
       return;
     }
-    await AccountModel.deleteOne(query);
-    console.log(`deleted account with ${query}`);
+    await AccountModel.deleteOne(field);
+    console.log(`deleted account with ${field}`);
   } catch (error: any) {
     console.log(error, { message: error.message });
   }
@@ -75,7 +75,7 @@ export async function deleteAccountById(accountId: string) {
       return;
     }
     await AccountModel.deleteOne({ _id: accountId });
-    console.log(`deleted accountwith id: ${accountId}`);
+    console.log(`deleted account with id: ${accountId}`);
   } catch (error: any) {
     console.log(error, { message: error.message });
   }

@@ -39,13 +39,12 @@ export async function updateAccount(
   updateFields: Record<keyof Account, any>
 ) {
   try {
-    const account = await AccountModel.findOneAndUpdate(field, updateFields, {
-      new: true,
-    });
+    const account = await AccountModel.findOne(field);
     if (!account) {
       console.log(`Account with ${field} not found`);
       return;
     }
+    await AccountModel.updateOne(field, updateFields);
     console.log("Account updated successfully:", account);
   } catch (error: any) {
     console.error(error, error.message);

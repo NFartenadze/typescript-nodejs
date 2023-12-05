@@ -39,13 +39,12 @@ export async function updateUser(
   updateFields: Record<keyof User, any>
 ) {
   try {
-    const user = await UserModel.findOneAndUpdate(field, updateFields, {
-      new: true,
-    });
+    const user = await UserModel.findOne(field);
     if (!user) {
       console.log(`User with ${field} not found`);
       return;
     }
+    await UserModel.updateOne(field, updateFields);
     console.log("User updated successfully:", user);
   } catch (error: any) {
     console.error(error, error.message);

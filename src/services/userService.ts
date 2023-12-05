@@ -17,7 +17,6 @@ export async function getUsers() {
     return users;
   } catch (error: any) {
     console.log(error, { message: error.message });
-    return;
   }
 }
 
@@ -31,7 +30,7 @@ export async function getUser(field: Record<keyof User, string>) {
     console.log(user);
     return user;
   } catch (error: any) {
-    console.log("Couldn't find user", { message: error.message });
+    console.log(error, { message: error.message });
   }
 }
 
@@ -49,13 +48,13 @@ export async function updateUser(
     }
     console.log("User updated successfully:", user);
   } catch (error: any) {
-    console.error("Error updating user:", error.message);
+    console.error(error, error.message);
   }
 }
 
 export async function deleteUserById(userId: string) {
   try {
-    const user = await UserModel.findById({ _id: userId });
+    const user = await UserModel.findById(userId);
 
     if (!user) {
       console.log(`User with id ${userId} not found`);
@@ -64,7 +63,7 @@ export async function deleteUserById(userId: string) {
     await UserModel.deleteOne({ _id: userId });
     console.log(`deleted user with id: ${userId}`);
   } catch (error: any) {
-    console.log("Error deleting user", { message: error.message });
+    console.log(error, { message: error.message });
   }
 }
 
@@ -79,6 +78,6 @@ export async function deleteUser(query: Record<keyof User, string>) {
     await UserModel.deleteOne(query);
     console.log(`deleted user with ${query}`);
   } catch (error: any) {
-    console.log("Error deleting user", { message: error.message });
+    console.log(error, { message: error.message });
   }
 }

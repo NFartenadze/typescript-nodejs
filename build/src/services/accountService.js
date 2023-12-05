@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateAccount = exports.getAccounts = exports.addAccount = void 0;
+exports.updateAccount = exports.getAccounts = exports.createAccount = void 0;
 const account_1 = require("../classes/account");
 const user_1 = require("../classes/user");
 const accountModel_1 = require("../models/accountModel");
-async function addAccount(user = new user_1.User("thomas", "madagascar"), balance) {
+async function createAccount(user = new user_1.User("thomas", "madagascar"), balance) {
     try {
         const account = await accountModel_1.AccountModel.create(new account_1.Account(user, balance));
         console.log(`added account ${account}`);
@@ -13,7 +13,7 @@ async function addAccount(user = new user_1.User("thomas", "madagascar"), balanc
         console.log(error, { message: error.message });
     }
 }
-exports.addAccount = addAccount;
+exports.createAccount = createAccount;
 async function getAccounts() {
     try {
         const accounts = await accountModel_1.AccountModel.find({});

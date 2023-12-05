@@ -28,18 +28,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv = __importStar(require("dotenv"));
-const bank_1 = require("./classes/bank");
+const userService_1 = require("./services/userService");
 const user_1 = require("./classes/user");
 dotenv.config();
 mongoose_1.default
     .connect(process.env.MONGODB_URI)
     .then(() => {
     console.log("Connected to MongoDb");
-    const bank = new bank_1.Bank("Example");
-    bank.createUser(new user_1.User("billy", "something"));
-    console.log(bank.users);
+    operations();
 })
     .catch((error) => {
     console.log(error);
 });
+async function operations() {
+    const user = new user_1.User("anna", "something");
+    // await createUser(user);
+    const users = await (0, userService_1.getUsers)();
+    // await updateUser("656ed58d9cfd1cd3e677a906", { contactInfo: "example" });
+    // await deleteUser("65696494d30ffcdaafed1353");
+}
 //# sourceMappingURL=index.js.map

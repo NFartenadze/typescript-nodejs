@@ -2,8 +2,13 @@ import { Account } from "./account";
 import { User } from "./user";
 
 class Bank {
+  name: string;
   accounts: Array<Account> = [];
   users: Array<User> = [];
+
+  constructor(name: string) {
+    this.name = name;
+  }
 
   createUser(user: User): void {
     this.users.push(user);

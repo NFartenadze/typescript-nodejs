@@ -1,18 +1,84 @@
 import { User } from "../classes/user";
 import { UserModel } from "../models/userModel";
 
-export async function addUser(userName: string, contactInfo: string) {
-  const user = await UserModel.create(new User(userName, contactInfo));
-  console.log(`added user ${user}`);
+export async function createUser(user: User) {
+  try {
+    await UserModel.create(user);
+    console.log(`added user ${user}`);
+  } catch (error: any) {
+    console.log(error, { message: error.message });
+  }
 }
 
 export async function getUsers() {
-  const users = await UserModel.find({});
-  console.log(users);
+  try {
+    const users = await UserModel.find({});
+    console.log(users);
+    return users;
+  } catch (error: any) {
+    console.log(error, { message: error.message });
+    return;
+  }
 }
 
-export async function updateUser(userId: string, name: string) {
-  const user = await UserModel.findById(userId);
-  const output = await user?.updateOne({ name: name });
-  console.log(output);
+export async function getUser(field: Record<keyof User, string>) {
+  try {
+    const user = await UserModel.findOne(field);
+    if (!user) {
+      console.log(`Couldn't find user with ${field}`);
+      return;
+    }
+    console.log(user);
+    return user;
+  } catch (error: any) {
+    console.log("Couldn't find user", { message: error.message });
+  }
+}
+
+export async function updateUser(
+  field: Record<keyof User, string>,
+  updateFields: Record<keyof User, any>
+) {
+  try {
+    const user = await UserModel.findOneAndUpdate(field, updateFields, {
+      new: true,
+    });
+    if (!user) {
+      console.log(`User with ${field} not found`);
+      return;
+    }
+    console.log("User updated successfully:", user);
+  } catch (error: any) {
+    console.error("Error updating user:", error.message);
+  }
+}
+
+export async function deleteUserById(userId: string) {
+  try {
+    const user = await UserModel.findById({ _id: userId });
+
+    if (!user) {
+      console.log(`User with id ${userId} not found`);
+      return;
+    }
+    await UserModel.deleteOne({ _id: userId });
+    console.log(`deleted user with id: ${userId}`);
+  } catch (error: any) {
+    console.log("Error deleting user", { message: error.message });
+  }
+}
+
+export async function deleteUser(query: Record<keyof User, string>) {
+  try {
+    const user = await UserModel.findOne(query);
+
+    if (!user) {
+      console.log(`User with ${query} not found`);
+      return;
+    }
+    await UserModel.deleteOne(query);
+    console.log(`deleted user with ${query}`);
+  } catch (error: any) {
+    console.log("Error deleting user", { message: error.message });
+  }
 }

@@ -1,5 +1,9 @@
 import { Account } from "../classes/account";
+import { Transaction } from "../classes/transaction";
+import { User } from "../classes/user";
 import { AccountModel } from "../models/accountModel";
+
+type FieldValue = User | number | Array<Transaction>;
 
 export async function createAccount(account: Account) {
   try {
@@ -20,7 +24,7 @@ export async function getAccounts() {
   }
 }
 
-export async function getAccount(field: Record<keyof Account, any>) {
+export async function getAccount(field: Record<keyof Account, FieldValue>) {
   try {
     const account = await AccountModel.findOne(field);
     if (!account) {
@@ -35,8 +39,8 @@ export async function getAccount(field: Record<keyof Account, any>) {
 }
 
 export async function updateAccount(
-  field: Record<keyof Account, any>,
-  updateFields: Record<keyof Account, any>
+  field: Record<keyof Account, FieldValue>,
+  updateFields: Record<keyof Account, FieldValue>
 ) {
   try {
     const account = await AccountModel.findOne(field);
@@ -51,7 +55,7 @@ export async function updateAccount(
   }
 }
 
-export async function deleteAccount(field: Record<keyof Account, any>) {
+export async function deleteAccount(field: Record<keyof Account, FieldValue>) {
   try {
     const account = await AccountModel.findOne(field);
 

@@ -1,5 +1,9 @@
+import { Account } from "../classes/account";
 import { Bank } from "../classes/bank";
+import { User } from "../classes/user";
 import { BankModel } from "../models/bankModel";
+
+type FieldValue = string | Array<Account> | Array<User>;
 
 export async function createBank() {
   try {
@@ -19,7 +23,7 @@ export async function getBanks() {
   }
 }
 
-export async function getBank(field: Record<keyof Bank, any>) {
+export async function getBank(field: Record<keyof Bank, FieldValue>) {
   try {
     const bank = await BankModel.findOne(field);
     if (!bank) {
@@ -34,8 +38,8 @@ export async function getBank(field: Record<keyof Bank, any>) {
 }
 
 export async function updateBank(
-  field: Record<keyof Bank, any>,
-  updateFields: Record<string, any>
+  field: Record<keyof Bank, FieldValue>,
+  updateFields: Record<string, FieldValue>
 ) {
   try {
     const bank = await BankModel.findOne(field);
@@ -51,7 +55,7 @@ export async function updateBank(
   }
 }
 
-export async function deleteBank(field: Record<keyof Bank, any>) {
+export async function deleteBank(field: Record<keyof Bank, FieldValue>) {
   try {
     const bank = await BankModel.findOne(field);
 

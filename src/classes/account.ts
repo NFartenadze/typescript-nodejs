@@ -77,9 +77,21 @@ class Account {
     return statement;
   }
 
-  transfer(toAccount: Account, amount: number): void {}
+  transfer(toAccount: Account, amount: number): void {
+    if (toAccount.balance < amount) {
+      throw new Error("Not Enough Money On Balance");
+    }
+    this.balance -= amount;
+    toAccount.balance += amount;
+  }
 
-  receive(fromAccount: Account, amount: number): void {}
+  receive(fromAccount: Account, amount: number): void {
+    if (fromAccount.balance < amount) {
+      throw new Error("Not Enough Money On Balance");
+    }
+    fromAccount.balance -= amount;
+    this.balance += amount;
+  }
 
   deposit(deposit: Deposit) {
     this.balance += deposit.amount;
@@ -91,8 +103,7 @@ class Account {
   }
 
   withdraw(withdraw: WithDraw) {
-    const checkAmountToBalance = withdraw.amount > this.balance;
-    if (checkAmountToBalance) {
+    if (withdraw.amount > this.balance) {
       throw new Error("Not Enough Money On Balance");
     }
     this.balance -= withdraw.amount;

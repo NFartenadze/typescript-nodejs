@@ -1,17 +1,34 @@
 import { Account } from "./account";
-import { Deposit } from "./deposit";
 import { Transaction } from "./transaction";
 import { User } from "./user";
-import { WithDraw } from "./withdraw";
 
 class Bank {
-  accounts: Array<Account> = [];
-  users: Array<User> = [];
-  transactions: Array<Transaction> = [];
+  constructor(
+    public name: string,
+    private accounts: Array<Account>,
+    private users: Array<User>
+  ) {
+    this.accounts = [];
+    this.users = [];
+  }
 
   createUser(user: User): void {
     this.users.push(user);
-    console.log(`User created with ID ${user.userId}`);
+    console.log(`User created with name ${user.firstName} ${user.lastName}`);
+  }
+
+  getUsers(): Array<User> {
+    return this.users;
+  }
+  getAccounts(): Array<Account> {
+    return this.accounts;
+  }
+
+  getTotalBankBalance(): number {
+    return this.accounts.reduce(
+      (total, account) => total + account.checkBalance(),
+      0
+    );
   }
 
   createAccount(account: Account): void {
@@ -26,40 +43,6 @@ class Bank {
       console.log(`Account created for ${account.owner}`);
     } else {
       console.log("Account already exists");
-    }
-  }
-
-  executeTransaction(account: Account, transaction: Transaction): void {
-    if (!this.accounts.includes(account)) {
-      console.log("Account not found");
-      return;
-    }
-
-    try {
-      if (transaction.type === "deposit") {
-        account.deposit(new Deposit(transaction.amount));
-        console.log(
-          `Deposit of ${
-            transaction.amount
-          } successful. New balance: ${account.checkBalance()}`
-        );
-      } else if (transaction.type === "withdraw") {
-        account.withdraw(new WithDraw(transaction.amount));
-        console.log(
-          `Withdrawal of ${
-            transaction.amount
-          } successful. New balance: ${account.checkBalance()}`
-        );
-      } else {
-        console.log("Invalid transaction type");
-      }
-
-      this.transactions.push(transaction);
-      console.log(
-        `Transaction recorded: ${transaction.getTransactionDetails()}`
-      );
-    } catch (error: any) {
-      console.log(`Transaction failed: ${error.message}`);
     }
   }
 

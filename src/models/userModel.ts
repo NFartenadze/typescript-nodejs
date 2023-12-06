@@ -1,22 +1,23 @@
 import { Schema, model } from "mongoose";
+import { User } from "../classes/user";
 
-interface IUser {
-  id: string;
-  name: string;
-  contactInfo: string;
-}
+type UserSchema = User;
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema<UserSchema>(
   {
-    id: { type: String, required: true },
-    name: { type: String, required: true },
-    contactInfo: { type: String, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    phoneNumber: { type: String, required: true },
+    address: { type: String, required: true },
+    dateOfBirth: { type: Date, required: true },
+    accountNumber: { type: String, required: true, unique: true },
   },
   {
     collection: "users",
   }
 );
 
-const User = model<IUser>("User", userSchema);
+const UserModel = model<UserSchema>("User", userSchema);
 
-export { User };
+export { UserModel };

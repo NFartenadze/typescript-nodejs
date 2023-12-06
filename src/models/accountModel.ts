@@ -1,15 +1,21 @@
 import { Schema, model } from "mongoose";
 import { User } from "../classes/user";
+import { Account } from "../classes/account";
+import { Transaction } from "../classes/transaction";
 
-interface IAccount {
-  owner: User;
-  balance: number;
-}
-const accountSchema = new Schema<IAccount>({
-  owner: { type: User, required: true },
-  balance: { type: Number, required: true },
-});
+type AccountSchema = Account;
+const accountSchema = new Schema<AccountSchema>(
+  {
+    accountNumber: { type: String, required: true },
+    owner: { type: User, required: true },
+    balance: { type: Number, required: true },
+    transactionHistory: { type: [Transaction], required: true },
+  },
+  {
+    collection: "accounts",
+  }
+);
 
-const Account = model<IAccount>("Account", accountSchema);
+const AccountModel = model<AccountSchema>("Account", accountSchema);
 
-export { Account };
+export { AccountModel };

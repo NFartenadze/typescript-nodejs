@@ -1,17 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Account = void 0;
+const withdraw_1 = require("./withdraw");
+const deposit_1 = require("./deposit");
 class Account {
     owner;
     balance;
-    // transactionHistory: Array<WithDraw | Deposit> = [];
+    transactionHistory = [];
     constructor(owner, balance = 0) {
         this.owner = owner;
         this.balance = balance;
     }
+    executeTransaction(account, transaction) {
+        try {
+            if (transaction.type === "deposit") {
+                account.deposit(new deposit_1.Deposit(transaction.amount));
+                console.log(`Deposit of ${transaction.amount} successful. New balance: ${account.checkBalance()}`);
+            }
+            else if (transaction.type === "withdraw") {
+                account.withdraw(new withdraw_1.WithDraw(transaction.amount));
+                console.log(`Withdrawal of ${transaction.amount} successful. New balance: ${account.checkBalance()}`);
+            }
+            else {
+                console.log("Invalid transaction type");
+            }
+            this.transactionHistory.push(transaction);
+            console.log(`Transaction recorded: ${transaction.getTransactionDetails()}`);
+        }
+        catch (error) {
+            console.log(`Transaction failed: ${error.message}`);
+        }
+    }
     deposit(deposit) {
         this.balance += deposit.amount;
-        // this.transactionHistory.push(deposit);
     }
     withdraw(withdraw) {
         const checkAmountToBalance = withdraw.amount > this.balance;
@@ -20,7 +41,6 @@ class Account {
         }
         this.balance -= withdraw.amount;
         console.log(`Withdrawn ${withdraw.amount}. New balance: ${this.balance}`);
-        // this.transactionHistory.push(withdraw);
     }
     checkBalance() {
         return this.balance;

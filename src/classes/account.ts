@@ -13,26 +13,32 @@ class Account {
     this.balance = balance;
   }
 
-  executeTransaction(account: Account, transaction: Transaction): void {
+  executeTransaction(
+    fromAccount: Account,
+    toAccount: Account,
+    transaction: Transaction
+  ): void {
     try {
       if (transaction.type === "deposit") {
-        account.deposit(new Deposit(transaction.amount));
-        console.log(
-          `Deposit of ${
-            transaction.amount
-          } successful. New balance: ${account.checkBalance()}`
-        );
+        const checkAmountToBalance =
+          transaction.amount <= 0 ||
+          transaction.amount > fromAccount.checkBalance();
+        if (checkAmountToBalance) {
+          throw new Error("Invalid deposit amount or not enough balance");
+        }
+        fromAccount.withdraw(new WithDraw(transaction.amount));
+        toAccount.deposit(new Deposit(transaction.amount));
       } else if (transaction.type === "withdraw") {
-        account.withdraw(new WithDraw(transaction.amount));
-        console.log(
-          `Withdrawal of ${
-            transaction.amount
-          } successful. New balance: ${account.checkBalance()}`
-        );
+        const checkAmountToBalance = transaction.amount > fromAccount.balance;
+        if (checkAmountToBalance) {
+          throw new Error("Not Enough Money On Balance");
+        }
+        fromAccount.withdraw(new WithDraw(transaction.amount));
+        toAccount.deposit(new Deposit(transaction.amount));
       } else {
         console.log("Invalid transaction type");
+        return;
       }
-
       this.transactionHistory.push(transaction);
       console.log(
         `Transaction recorded: ${transaction.getTransactionDetails()}`
@@ -41,8 +47,50 @@ class Account {
       console.log(`Transaction failed: ${error.message}`);
     }
   }
+
+  generateMonthlyStatement(): string {
+    const currentDate = new Date();
+    const startDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      1
+    );
+    const endDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth() + 1,
+      0
+    );
+
+    const filteredTransactions = this.transactionHistory.filter(
+      (transaction) =>
+        transaction.performedAt >= startDate &&
+        transaction.performedAt <= endDate
+    );
+
+    let statement = `Monthly Statement - ${startDate.toDateString()} to ${endDate.toDateString()}\n`;
+    statement += `Account Owner: ${this.owner.getName()}\n\n`;
+
+    if (filteredTransactions.length === 0) {
+      statement += "No transactions for this period.\n";
+    } else {
+      statement += "Transaction Details:\n";
+      for (const transaction of filteredTransactions) {
+        statement += `${transaction.getTransactionDetails()}\n`;
+      }
+    }
+
+    statement += `\nEnding Balance: ${this.checkBalance()}\n`;
+
+    return statement;
+  }
+
   deposit(deposit: Deposit) {
     this.balance += deposit.amount;
+    console.log(
+      `Deposit of ${
+        deposit.amount
+      } successful. New balance: ${this.checkBalance()}`
+    );
   }
 
   withdraw(withdraw: WithDraw) {
@@ -51,7 +99,9 @@ class Account {
       throw new Error("Not Enough Money On Balance");
     }
     this.balance -= withdraw.amount;
-    console.log(`Withdrawn ${withdraw.amount}. New balance: ${this.balance}`);
+    console.log(
+      `Withdrawn ${withdraw.amount}. New balance: ${this.checkBalance}`
+    );
   }
   checkBalance(): number {
     return this.balance;

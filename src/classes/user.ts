@@ -10,6 +10,10 @@ class User {
   getUserDetails(): string {
     return `User Name: ${this.name},\n Contact: ${this.contactInfo}`;
   }
+
+  getName() {
+    return this.name;
+  }
 }
 
 export { User };

@@ -63,7 +63,9 @@ class Account {
     );
 
     let statement = `Monthly Statement - ${startDate.toDateString()} to ${endDate.toDateString()}\n`;
-    statement += `Account Owner: ${this.owner.getName()}\n\n`;
+    statement += `Account Owner: ${this.owner.getPropertyValue(
+      "firstName"
+    )}\n\n`;
 
     if (filteredTransactions.length === 0) {
       statement += "No transactions for this period.\n";

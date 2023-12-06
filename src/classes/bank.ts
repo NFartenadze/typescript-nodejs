@@ -1,4 +1,5 @@
 import { Account } from "./account";
+import { Transaction } from "./transaction";
 import { User } from "./user";
 
 class Bank {
@@ -13,6 +14,13 @@ class Bank {
   createUser(user: User): void {
     this.users.push(user);
     console.log(`User created with name ${user.name}`);
+  }
+
+  getTotalBankBalance(): number {
+    return this.accounts.reduce(
+      (total, account) => total + account.checkBalance(),
+      0
+    );
   }
 
   createAccount(account: Account): void {
@@ -42,7 +50,3 @@ class Bank {
 }
 
 export { Bank };
-
-
-
-

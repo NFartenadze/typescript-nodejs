@@ -1,18 +1,17 @@
+type TransferType = "transfer" | "deposit" | "withdraw" | "receive";
 class Transaction {
-  id: string;
   amount: number;
-  type: string;
+  type: TransferType;
   performedAt: Date;
 
-  constructor(id: string, amount: number, type: string) {
-    this.id = id;
+  constructor(amount: number, type: TransferType) {
     this.amount = amount;
     this.type = type;
     this.performedAt = new Date();
   }
 
   getTransactionDetails(): string {
-    return `Transaction ID: ${this.id}, Amount: ${this.amount}, Type: ${this.type}, Performed At: ${this.performedAt}`;
+    return `Transaction Amount: ${this.amount}, Type: ${this.type}, Performed At: ${this.performedAt}`;
   }
 }
 

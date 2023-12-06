@@ -1,32 +1,13 @@
 class User {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  address: string;
-  dateOfBirth: Date;
-  accountNumber: string;
-  accountBalance: number;
-
   constructor(
-    firstName: string,
-    lastName: string,
-    email: string,
-    phoneNumber: string,
-    address: string,
-    dateOfBirth: Date,
-    accountNumber: string,
-    accountBalance: number
-  ) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.phoneNumber = phoneNumber;
-    this.address = address;
-    this.dateOfBirth = dateOfBirth;
-    this.accountNumber = accountNumber;
-    this.accountBalance = accountBalance;
-  }
+    public firstName: string,
+    public lastName: string,
+    public email: string,
+    public phoneNumber: string,
+    public address: string,
+    public dateOfBirth: Date,
+    public accountNumber: string
+  ) {}
   getUserDetails(): string {
     return `
       Name: ${this.firstName} ${this.lastName}
@@ -35,7 +16,6 @@ class User {
       Address: ${this.address}
       Date of Birth: ${this.dateOfBirth.toISOString().split("T")[0]}
       Account Number: ${this.accountNumber}
-      Account Balance: ${this.accountBalance}
     `;
   }
 

@@ -4,11 +4,13 @@ import { User } from "./user";
 import { Transaction } from "./transaction";
 
 class Account {
+  accountNumber: string;
   owner: User;
   balance: number;
   transactionHistory: Array<Transaction> = [];
 
-  constructor(owner: User, balance = 0) {
+  constructor(accountNumber: string, owner: User, balance = 0) {
+    this.accountNumber = accountNumber;
     this.owner = owner;
     this.balance = balance;
   }

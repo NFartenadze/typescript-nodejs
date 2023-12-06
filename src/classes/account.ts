@@ -13,27 +13,22 @@ class Account {
     this.balance = balance;
   }
 
-  executeTransaction(
-    fromAccount: Account,
-    toAccount: Account,
-    transaction: Transaction
-  ): void {
+  executeTransaction(toAccount: Account, transaction: Transaction): void {
     try {
       if (transaction.type === "deposit") {
         const checkAmountToBalance =
-          transaction.amount <= 0 ||
-          transaction.amount > fromAccount.checkBalance();
+          transaction.amount <= 0 || transaction.amount > this.checkBalance();
         if (checkAmountToBalance) {
           throw new Error("Invalid deposit amount or not enough balance");
         }
-        fromAccount.withdraw(new WithDraw(transaction.amount));
+        this.withdraw(new WithDraw(transaction.amount));
         toAccount.deposit(new Deposit(transaction.amount));
       } else if (transaction.type === "withdraw") {
-        const checkAmountToBalance = transaction.amount > fromAccount.balance;
+        const checkAmountToBalance = transaction.amount > this.balance;
         if (checkAmountToBalance) {
           throw new Error("Not Enough Money On Balance");
         }
-        fromAccount.withdraw(new WithDraw(transaction.amount));
+        this.withdraw(new WithDraw(transaction.amount));
         toAccount.deposit(new Deposit(transaction.amount));
       } else {
         console.log("Invalid transaction type");

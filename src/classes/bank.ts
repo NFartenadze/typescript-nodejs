@@ -3,14 +3,25 @@ import { Transaction } from "./transaction";
 import { User } from "./user";
 
 class Bank {
-  accounts: Array<Account> = [];
-  users: Array<User> = [];
-
-  constructor(public name: string) {}
+  constructor(
+    public name: string,
+    private accounts: Array<Account>,
+    private users: Array<User>
+  ) {
+    this.accounts = [];
+    this.users = [];
+  }
 
   createUser(user: User): void {
     this.users.push(user);
     console.log(`User created with name ${user.firstName} ${user.lastName}`);
+  }
+
+  getUsers(): Array<User> {
+    return this.users;
+  }
+  getAccounts(): Array<Account> {
+    return this.accounts;
   }
 
   getTotalBankBalance(): number {

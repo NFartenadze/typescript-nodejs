@@ -3,17 +3,14 @@ import { Transaction } from "./transaction";
 import { User } from "./user";
 
 class Bank {
-  name: string;
   accounts: Array<Account> = [];
   users: Array<User> = [];
 
-  constructor(name: string) {
-    this.name = name;
-  }
+  constructor(public name: string) {}
 
   createUser(user: User): void {
     this.users.push(user);
-    console.log(`User created with name ${user.name}`);
+    console.log(`User created with name ${user.firstName} ${user.lastName}`);
   }
 
   getTotalBankBalance(): number {

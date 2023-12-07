@@ -6,10 +6,10 @@ import { Transaction } from "../classes/transaction";
 type AccountSchema = Account;
 const accountSchema = new Schema<AccountSchema>(
   {
-    accountNumber: { type: String, required: true },
-    owner: { type: User, required: true },
-    balance: { type: Number, required: true },
-    transactionHistory: { type: [Transaction], required: true },
+    accountNumber: { type: String },
+    owner: { type: User },
+    balance: { type: Number },
+    transactionHistory: { type: [Transaction] },
   },
   {
     collection: "accounts",

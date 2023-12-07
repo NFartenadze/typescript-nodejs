@@ -38,6 +38,7 @@ export async function getAccount(field: Record<keyof Account, FieldValue>) {
   }
 }
 
+
 export async function updateAccount(
   field: Record<keyof Account, FieldValue>,
   updateFields: Record<keyof Account, FieldValue>

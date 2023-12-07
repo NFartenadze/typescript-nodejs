@@ -7,9 +7,9 @@ type BankSchema = Bank;
 
 const bankSchema = new Schema<BankSchema>(
   {
-    name: { type: String, required: true },
-    accounts: { type: [Account], required: true },
-    users: { type: [User], required: true },
+    name: { type: String },
+    accounts: { type: [Account] },
+    users: { type: [User] },
   },
   {
     collection: "banks",

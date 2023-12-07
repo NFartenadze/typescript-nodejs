@@ -1,5 +1,3 @@
-import { WithDraw } from "./withdraw";
-import { Deposit } from "./deposit";
 import { User } from "./user";
 import { Transaction } from "./transaction";
 
@@ -23,10 +21,10 @@ class Account {
           this.receive(account, transaction.amount);
           break;
         case "withdraw":
-          this.withdraw(new WithDraw(transaction.amount));
+          this.withdraw(transaction.amount);
           break;
         case "deposit":
-          this.deposit(new Deposit(transaction.amount));
+          this.deposit(transaction.amount);
           break;
         default:
           console.log("Invalid transaction type");
@@ -95,23 +93,19 @@ class Account {
     this.balance += amount;
   }
 
-  deposit(deposit: Deposit) {
-    this.balance += deposit.amount;
+  deposit(amount: number) {
+    this.balance += amount;
     console.log(
-      `Deposit of ${
-        deposit.amount
-      } successful. New balance: ${this.checkBalance()}`
+      `Deposit of ${amount} successful. New balance: ${this.checkBalance()}`
     );
   }
 
-  withdraw(withdraw: WithDraw) {
-    if (withdraw.amount > this.balance) {
+  withdraw(amount: number) {
+    if (amount > this.balance) {
       throw new Error("Not Enough Money On Balance");
     }
-    this.balance -= withdraw.amount;
-    console.log(
-      `Withdrawn ${withdraw.amount}. New balance: ${this.checkBalance}`
-    );
+    this.balance -= amount;
+    console.log(`Withdrawn ${amount}. New balance: ${this.checkBalance}`);
   }
   checkBalance(): number {
     return this.balance;

@@ -3,14 +3,10 @@ import { Transaction } from "./transaction";
 import { User } from "./user";
 
 class Bank {
-  constructor(
-    public name: string,
-    private accounts: Array<Account>,
-    private users: Array<User>
-  ) {
-    this.accounts = [];
-    this.users = [];
-  }
+  accounts: Account[] = [];
+  users: User[] = [];
+
+  constructor(public name: string) {}
 
   createUser(user: User): void {
     this.users.push(user);

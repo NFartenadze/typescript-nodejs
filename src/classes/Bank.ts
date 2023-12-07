@@ -1,5 +1,4 @@
 import { Account } from "./account";
-import { Transaction } from "./transaction";
 import { User } from "./user";
 
 class Bank {

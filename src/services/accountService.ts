@@ -1,7 +1,7 @@
-import { Account } from "../classes/account";
-import { Transaction } from "../classes/transaction";
-import { User } from "../classes/user";
-import { AccountModel } from "../models/accountModel";
+import { Account } from "../classes/Account";
+import { Transaction } from "../classes/Transaction";
+import { User } from "../classes/User";
+import { AccountModel } from "../models/AccountModel";
 
 type FieldValue = User | number | Array<Transaction>;
 

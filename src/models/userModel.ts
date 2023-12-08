@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { User } from "../classes/user";
+import { User } from "../classes/User";
 
 type UserSchema = User;
 

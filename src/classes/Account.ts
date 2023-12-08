@@ -1,5 +1,5 @@
-import { User } from "./user";
-import { Transaction } from "./transaction";
+import { User } from "./User";
+import { Transaction } from "./Transaction";
 
 class Account {
   constructor(

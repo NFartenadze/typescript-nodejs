@@ -1,7 +1,7 @@
-import { Account } from "../classes/account";
-import { Bank } from "../classes/bank";
-import { User } from "../classes/user";
-import { BankModel } from "../models/bankModel";
+import { Account } from "../classes/Account";
+import { Bank } from "../classes/Bank";
+import { User } from "../classes/User";
+import { BankModel } from "../models/BankModel";
 
 type FieldValue = string | Array<Account> | Array<User>;
 

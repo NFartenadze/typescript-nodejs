@@ -1,6 +1,12 @@
 import { Account } from "../classes/Account";
 import { Bank } from "../classes/Bank";
 import { User } from "../classes/User";
+import {
+  CreateError,
+  DeleteError,
+  NotFoundError,
+  UpdateError,
+} from "../errors/Error";
 import { BankModel } from "../models/BankModel";
 
 type FieldValue = string | Array<Account> | Array<User>;
@@ -8,6 +14,9 @@ type FieldValue = string | Array<Account> | Array<User>;
 export async function createBank() {
   try {
     const bank = await BankModel.create(new Bank("Example Bank"));
+    if (!bank) {
+      throw new CreateError("error creating account");
+    }
     console.log(`added bank ${bank}`);
   } catch (error: any) {
     console.log(error, { message: error.message });
@@ -17,7 +26,9 @@ export async function createBank() {
 export async function getBanks() {
   try {
     const banks = await BankModel.find({});
-    console.log(banks);
+    if (banks.length === 0) {
+      throw new NotFoundError(`Couldn't find banks`);
+    }
   } catch (error: any) {
     console.log(error, { message: error.message });
   }
@@ -27,8 +38,7 @@ export async function getBank(field: Record<keyof Bank, FieldValue>) {
   try {
     const bank = await BankModel.findOne(field);
     if (!bank) {
-      console.log(`Couldn't find bank with ${field}`);
-      return;
+      throw new NotFoundError(`Couldn't find bank with ${field}`);
     }
     console.log(bank);
     return bank;
@@ -45,13 +55,13 @@ export async function updateBank(
     const bank = await BankModel.findOne(field);
 
     if (!bank) {
-      console.log(`Couldn't find bank with ${field}`);
-      return;
+      throw new NotFoundError(`Couldn't find bank with ${field}`);
     }
     await BankModel.updateOne(field, updateFields);
     console.log("Bank updated successfully:", bank);
   } catch (error: any) {
-    console.error(error, error.message);
+    console.log(error);
+    throw new UpdateError("Error updating bank");
   }
 }
 
@@ -60,26 +70,13 @@ export async function deleteBank(field: Record<keyof Bank, FieldValue>) {
     const bank = await BankModel.findOne(field);
 
     if (!bank) {
-      console.log(`Bank with ${field} not found`);
-      return;
+      throw new NotFoundError(`Couldn't find bank with ${field}`);
     }
+
     await BankModel.deleteOne(field);
     console.log(`deleted bank with ${field}`);
   } catch (error: any) {
-    console.log(error, { message: error.message });
-  }
-}
-
-export async function deleteAccountById(bankId: string) {
-  try {
-    const bank = await BankModel.findById(bankId);
-    if (!bank) {
-      console.log(`Bank with ${bankId} not found`);
-      return;
-    }
-    await BankModel.deleteOne({ _id: bankId });
-    console.log(`deleted bank with id: ${bankId}`);
-  } catch (error: any) {
-    console.log(error, { message: error.message });
+    console.log(error);
+    throw new DeleteError("Error Deleting Account");
   }
 }

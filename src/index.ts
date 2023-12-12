@@ -4,9 +4,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 mongoose
-  .connect(
-    "mongodb+srv://farnick1148:o1vvfQtCYh4ehKJK@cluster0.d9r34ci.mongodb.net/banking-system/?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_URI!)
   .then(() => {
     console.log("Connected to MongoDb");
   })

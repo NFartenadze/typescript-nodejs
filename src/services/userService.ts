@@ -1,6 +1,6 @@
 import { User } from "../classes/User";
 import { CreateError, NotFoundError, UpdateError } from "../errors/Error";
-import { UserModel } from "../models/UserModel";
+import { UserModel } from "../models/userModel";
 
 export async function createUser(user: User) {
   try {
@@ -18,7 +18,7 @@ export async function getUsers() {
   try {
     const users = await UserModel.find({});
     if (users.length === 0) {
-      throw new NotFoundError(`Couldn't find users`);
+      throw new Error(`Couldn't find users`);
     }
     return users;
   } catch (error: any) {
@@ -30,7 +30,7 @@ export async function getUser(field: Record<keyof User, string>) {
   try {
     const user = await UserModel.findOne(field);
     if (!user) {
-      throw new NotFoundError(`Couldn't find user with ${field}`);
+      throw new Error(`Couldn't find user with ${field}`);
     }
     return user;
   } catch (error: any) {

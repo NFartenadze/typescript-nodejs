@@ -1,6 +1,5 @@
-import { Account } from "./account";
-import { Transaction } from "./transaction";
-import { User } from "./user";
+import { Account } from "./Account";
+import { User } from "./User";
 
 class Bank {
   accounts: Account[] = [];

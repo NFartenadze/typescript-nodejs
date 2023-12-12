@@ -1,5 +1,5 @@
-import { User } from "../classes/user";
-import { UserModel } from "../models/userModel";
+import { User } from "../classes/User";
+import { UserModel } from "../models/UserModel";
 
 export async function createUser(user: User) {
   try {

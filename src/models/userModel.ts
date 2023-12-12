@@ -11,7 +11,6 @@ const userSchema = new Schema<UserSchema>(
     phoneNumber: { type: String },
     address: { type: String },
     dateOfBirth: { type: Date },
-    accountNumber: { type: String },
   },
   {
     collection: "users",

@@ -14,6 +14,7 @@ export async function createAccount(account: Account) {
       throw new Error("error creating account");
     }
     console.log(`added account ${account}`);
+    return acc;
   } catch (error: any) {
     console.log(error, { message: error.message });
   }

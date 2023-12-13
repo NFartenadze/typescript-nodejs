@@ -1,4 +1,3 @@
-// tests/integration/accountService.test.ts
 import * as dotenv from "dotenv";
 import mongoose from "mongoose";
 import {

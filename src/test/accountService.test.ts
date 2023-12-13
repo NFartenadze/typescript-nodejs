@@ -5,6 +5,7 @@ import {
   createAccount,
   getAccounts,
   getAccount,
+  deleteAccount,
 } from "../services/accountService";
 import { Account } from "../classes/Account";
 import { User } from "../classes/User";
@@ -12,7 +13,7 @@ import { User } from "../classes/User";
 describe("Account Service Integration Tests", () => {
   dotenv.config();
 
-  const user = new User(
+  const userPayload = new User(
     "bob",
     "smith",
     "smith@gmail.com",
@@ -21,7 +22,8 @@ describe("Account Service Integration Tests", () => {
     new Date(2023, 0, 13)
   );
 
-  const payload = new Account(user, 2000, []);
+  const payload = new Account("12345", userPayload, 2000, []);
+
   const uri = process.env.MONGODB_URI ?? "mongodb uri";
   beforeAll(async () => {
     await mongoose
@@ -57,12 +59,21 @@ describe("Account Service Integration Tests", () => {
     expect(accounts).toHaveLength(1);
   });
 
-  //   test("successful retrieval of a single account", async () => {
-  //     const createdAccount = await createAccount(payload);
+  test("successful retrieval of a single account", async () => {
+    const createdAccount = await createAccount(payload);
 
-  //     const retrievedAccount = await getAccount({
-  //       owner: user,
-  //     });
-  //     expect(retrievedAccount).toBeDefined();
-  //   });
+    const retrievedAccount = await getAccount({ accountNumber: "12345" });
+    expect(retrievedAccount).toBeDefined;
+  });
+
+  test("successful deletion of an account", async () => {
+    const createdAccount = await createAccount(payload);
+
+    await deleteAccount({ accountNumber: "12345" });
+
+    //in this case getAccount will throw error but test will pass. retrieved account will be undefined
+    const retrievedAccount = await getAccount({ accountNumber: "12345" });
+
+    expect(retrievedAccount).toBeUndefined;
+  });
 });

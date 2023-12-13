@@ -6,6 +6,7 @@ import { transactionSchema } from "./transactionMode";
 type AccountSchema = Account;
 export const accountSchema = new Schema<AccountSchema>(
   {
+    accountNumber: { type: String },
     owner: { type: userSchema },
     balance: { type: Number },
     transactionHistory: { type: [transactionSchema] },

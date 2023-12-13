@@ -3,6 +3,7 @@ import { Transaction } from "./Transaction";
 
 class Account {
   constructor(
+    public accountNumber: String,
     public owner: User,
     public balance = 0,
     public transactionHistory: Transaction[]

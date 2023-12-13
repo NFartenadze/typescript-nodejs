@@ -1,9 +1,10 @@
-import mongoose from "mongoose";
+import mongoose, { FilterQuery } from "mongoose";
 import { Account } from "../classes/Account";
 import { Transaction } from "../classes/Transaction";
 import { User } from "../classes/User";
 
 import { AccountModel } from "../models/accountModel";
+import { Filter } from "mongodb";
 
 type FieldValue = User | number | Array<Transaction>;
 
@@ -32,7 +33,7 @@ export async function getAccounts() {
   }
 }
 
-export async function getAccount(field: Record<keyof Account, FieldValue>) {
+export async function getAccount(field: FilterQuery<Account>) {
   try {
     const account = await AccountModel.findOne(field);
     if (!account) {
@@ -45,7 +46,7 @@ export async function getAccount(field: Record<keyof Account, FieldValue>) {
 }
 
 export async function updateAccount(
-  field: Record<keyof Account, FieldValue>,
+  field: FilterQuery<Account>,
   updateFields: Record<keyof Account, FieldValue>
 ) {
   try {
@@ -61,7 +62,7 @@ export async function updateAccount(
   }
 }
 
-export async function deleteAccount(field: Record<keyof Account, FieldValue>) {
+export async function deleteAccount(field: FilterQuery<Account>) {
   try {
     const account = await AccountModel.findOne(field);
 

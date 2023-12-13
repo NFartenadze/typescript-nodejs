@@ -18,14 +18,14 @@ describe("Account Service Integration Tests", () => {
     "smith@gmail.com",
     "12312312",
     "new york",
-    new Date("13/09/23")
+    new Date(2023, 0, 13)
   );
 
   const payload = new Account(user, 2000, []);
-
+  const uri = process.env.MONGODB_URI ?? "mongodb uri";
   beforeAll(async () => {
     await mongoose
-      .connect(process.env.MONGODB_URI!)
+      .connect(uri)
       .then(() => console.log("Connected to mongodb"))
       .catch((error) => {
         console.log(error);
@@ -37,7 +37,10 @@ describe("Account Service Integration Tests", () => {
   });
 
   afterEach(async () => {
-    await mongoose.connection.db.dropDatabase();
+    const collections = mongoose.connection.collections;
+    for (const key in collections) {
+      await collections[key].deleteMany({});
+    }
   });
 
   test("successful account creation", async () => {

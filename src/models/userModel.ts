@@ -3,7 +3,7 @@ import { User } from "../classes/User";
 
 type UserSchema = User;
 
-const userSchema = new Schema<UserSchema>(
+export const userSchema = new Schema<UserSchema>(
   {
     firstName: { type: String },
     lastName: { type: String },
@@ -11,7 +11,6 @@ const userSchema = new Schema<UserSchema>(
     phoneNumber: { type: String },
     address: { type: String },
     dateOfBirth: { type: Date },
-    accountNumber: { type: String },
   },
   {
     collection: "users",

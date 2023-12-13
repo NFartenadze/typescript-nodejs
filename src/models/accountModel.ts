@@ -1,15 +1,15 @@
 import { Schema, model } from "mongoose";
-import { User } from "../classes/User";
 import { Account } from "../classes/Account";
-import { Transaction } from "../classes/Transaction";
+import { userSchema } from "./userModel";
+import { transactionSchema } from "./transactionMode";
 
 type AccountSchema = Account;
-const accountSchema = new Schema<AccountSchema>(
+export const accountSchema = new Schema<AccountSchema>(
   {
     accountNumber: { type: String },
-    owner: { type: User },
+    owner: { type: userSchema },
     balance: { type: Number },
-    transactionHistory: { type: [Transaction] },
+    transactionHistory: { type: [transactionSchema] },
   },
   {
     collection: "accounts",

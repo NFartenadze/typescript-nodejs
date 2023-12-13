@@ -1,3 +1,4 @@
+import { FilterQuery } from "mongoose";
 import { Account } from "../classes/Account";
 import { Bank } from "../classes/Bank";
 import { User } from "../classes/User";
@@ -6,9 +7,9 @@ import { BankModel } from "../models/BankModel";
 
 type FieldValue = string | Array<Account> | Array<User>;
 
-export async function createBank() {
+export async function createBank(newBank: Bank) {
   try {
-    const bank = await BankModel.create(new Bank("Example Bank"));
+    const bank = await BankModel.create(newBank);
     if (!bank) {
       throw new Error("error creating account");
     }
@@ -24,12 +25,13 @@ export async function getBanks() {
     if (banks.length === 0) {
       throw new Error(`Couldn't find banks`);
     }
+    return banks;
   } catch (error: any) {
     console.log(error, { message: error.message });
   }
 }
 
-export async function getBank(field: Record<keyof Bank, FieldValue>) {
+export async function getBank(field: FilterQuery<Bank>) {
   try {
     const bank = await BankModel.findOne(field);
     if (!bank) {
@@ -43,7 +45,7 @@ export async function getBank(field: Record<keyof Bank, FieldValue>) {
 }
 
 export async function updateBank(
-  field: Record<keyof Bank, FieldValue>,
+  field: FilterQuery<Bank>,
   updateFields: Record<string, FieldValue>
 ) {
   try {
@@ -60,7 +62,7 @@ export async function updateBank(
   }
 }
 
-export async function deleteBank(field: Record<keyof Bank, FieldValue>) {
+export async function deleteBank(field: FilterQuery<Bank>) {
   try {
     const bank = await BankModel.findOne(field);
 

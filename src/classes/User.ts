@@ -5,8 +5,7 @@ class User {
     public email: string,
     public phoneNumber: string,
     public address: string,
-    public dateOfBirth: Date,
-    public accountNumber: string
+    public dateOfBirth: Date
   ) {}
   getUserDetails(): string {
     return `
@@ -15,7 +14,6 @@ class User {
       Phone Number: ${this.phoneNumber}
       Address: ${this.address}
       Date of Birth: ${this.dateOfBirth.toISOString().split("T")[0]}
-      Account Number: ${this.accountNumber}
     `;
   }
 

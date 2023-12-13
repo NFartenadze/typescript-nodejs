@@ -60,7 +60,7 @@ describe.only("Bank Service Integration Tests", () => {
 
     await deleteBank({ name: "swedish" });
 
-    //in this case getAccount will throw error but test will pass. retrieved bank will be undefined
+    //in this case getBank will throw error but test will pass. retrieved bank will be undefined
     const retreivedBank = await getBank({ name: "swedish" });
     expect(retreivedBank).toBeUndefined;
   });

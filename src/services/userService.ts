@@ -1,3 +1,4 @@
+import { FilterQuery } from "mongoose";
 import { User } from "../classes/User";
 
 import { UserModel } from "../models/userModel";
@@ -26,7 +27,7 @@ export async function getUsers() {
   }
 }
 
-export async function getUser(field: Record<keyof User, string>) {
+export async function getUser(field: FilterQuery<User>) {
   try {
     const user = await UserModel.findOne(field);
     if (!user) {
@@ -39,7 +40,7 @@ export async function getUser(field: Record<keyof User, string>) {
 }
 
 export async function updateUser(
-  field: Record<keyof User, string>,
+  field: FilterQuery<User>,
   updateFields: Record<keyof User, any>
 ) {
   try {
@@ -54,7 +55,7 @@ export async function updateUser(
   }
 }
 
-export async function deleteUser(field: Record<keyof User, string>) {
+export async function deleteUser(field: FilterQuery<User>) {
   try {
     const user = await UserModel.findOne(field);
 

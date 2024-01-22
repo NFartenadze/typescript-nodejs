@@ -1,4 +1,4 @@
-type TransferType = "transfer" | "deposit" | "withdraw" | "receive";
+type TransferType = "transfer" | "deposit" | "withdraw" | "receive" | "loan-payment";
 class Transaction {
   constructor(
     public amount: number,

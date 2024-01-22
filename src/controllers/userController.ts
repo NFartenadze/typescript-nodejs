@@ -1,4 +1,6 @@
 import { FilterQuery } from "mongoose";
+import express from "express";
+
 import { User } from "../classes/User";
 
 import { UserModel } from "../models/userModel";
@@ -27,6 +29,19 @@ export async function getUsers() {
   }
 }
 
+export const getAllUsers = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const users = await getUsers();
+    return res.status(200).json(users);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
+
 export async function getUser(field: FilterQuery<User>) {
   try {
     const user = await UserModel.findOne(field);
@@ -39,19 +54,16 @@ export async function getUser(field: FilterQuery<User>) {
   }
 }
 
-export async function updateUser(
-  field: FilterQuery<User>,
-  updateFields: Record<keyof User, any>
-) {
+export async function updateUser(field: FilterQuery<User>, updateField: {}) {
   try {
     const user = await UserModel.findOne(field);
     if (!user) {
       throw new Error(`Couldn't find user with ${field}`);
     }
-    await UserModel.updateOne(field, updateFields);
+    await UserModel.updateOne(field, updateField);
     console.log("User updated successfully:", user);
   } catch (error: any) {
-    throw new Error("Error updating user");
+    console.error(error);
   }
 }
 

@@ -1,10 +1,9 @@
-import mongoose, { FilterQuery } from "mongoose";
+import { FilterQuery } from "mongoose";
 import { Account } from "../classes/Account";
 import { Transaction } from "../classes/Transaction";
 import { User } from "../classes/User";
 
 import { AccountModel } from "../models/accountModel";
-import { Filter } from "mongodb";
 
 type FieldValue = User | number | Array<Transaction>;
 

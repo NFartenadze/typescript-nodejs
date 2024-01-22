@@ -5,7 +5,7 @@ import {
   getBank,
   getBanks,
   deleteBank,
-} from "../services/bankService";
+} from "../controllers/bankController";
 import { Bank } from "../classes/Bank";
 
 describe("Bank Service Integration Tests", () => {

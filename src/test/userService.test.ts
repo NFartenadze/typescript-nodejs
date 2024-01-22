@@ -5,7 +5,8 @@ import {
   getUser,
   getUsers,
   deleteUser,
-} from "../services/userService";
+  updateUser,
+} from "../controllers/userController";
 import { User } from "../classes/User";
 
 describe("User Service Integration Tests", () => {
@@ -44,7 +45,7 @@ describe("User Service Integration Tests", () => {
   test("successful User creation", async () => {
     await createUser(payload);
 
-    const user = await getUser({ name: "john" });
+    const user = await getUser({ firstName: "john" });
     expect(user).toBeDefined;
   });
 
@@ -55,20 +56,24 @@ describe("User Service Integration Tests", () => {
     expect(users).toHaveLength(1);
   });
 
-  test("successful retrieval of a single User", async () => {
-    await createUser(payload);
-
-    const retreivedUser = await getUser({ name: "swedish" });
-    expect(retreivedUser).toBeDefined;
-  });
-
   test("successful deletion of an User", async () => {
     await createUser(payload);
 
-    await deleteUser({ name: "swedish" });
+    await deleteUser({ firstName: "john" });
 
     //in this case getUser will throw error but test will pass. retrieved User will be undefined
-    const retreivedUser = await getUser({ name: "swedish" });
+    const retreivedUser = await getUser({ firstName: "john" });
     expect(retreivedUser).toBeUndefined;
+  });
+
+  test("successful update of an User", async () => {
+    await createUser(payload);
+
+    const updateFields = { lastName: "updatedLastName" };
+    await updateUser({ firstName: "john" }, updateFields);
+
+    const updatedUser = await getUser({ firstName: "john" });
+    expect(updatedUser?.lastName).toEqual(updateFields.lastName);
+    console.log(updatedUser);
   });
 });

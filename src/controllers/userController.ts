@@ -1,33 +1,6 @@
-import { FilterQuery } from "mongoose";
 import express from "express";
 
-import { User } from "../classes/User";
-
-import { UserModel } from "../models/userModel";
-
-export async function createUser(user: User) {
-  try {
-    const usr = await UserModel.create(user);
-    if (!usr) {
-      throw new Error("error creating account");
-    }
-    console.log(`added user ${user}`);
-  } catch (error: any) {
-    console.log(error, { message: error.message });
-  }
-}
-
-export async function getUsers() {
-  try {
-    const users = await UserModel.find({});
-    if (users.length === 0) {
-      throw new Error(`Couldn't find users`);
-    }
-    return users;
-  } catch (error: any) {
-    console.log(error, { message: error.message });
-  }
-}
+import { deleteUserById, getUserById, getUsers } from "../db/users";
 
 export const getAllUsers = async (
   req: express.Request,
@@ -42,41 +15,37 @@ export const getAllUsers = async (
   }
 };
 
-export async function getUser(field: FilterQuery<User>) {
+export const deleteUsers = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
-    const user = await UserModel.findOne(field);
-    if (!user) {
-      throw new Error(`Couldn't find user with ${field}`);
-    }
-    return user;
-  } catch (error: any) {
-    console.log(error, { message: error.message });
+    const { id } = req.params;
+    const deletedUser = await deleteUserById(id);
+    return res.json(deletedUser);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
   }
-}
+};
 
-export async function updateUser(field: FilterQuery<User>, updateField: {}) {
+export const updateUser = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
-    const user = await UserModel.findOne(field);
-    if (!user) {
-      throw new Error(`Couldn't find user with ${field}`);
-    }
-    await UserModel.updateOne(field, updateField);
-    console.log("User updated successfully:", user);
-  } catch (error: any) {
-    console.error(error);
-  }
-}
+    const { id } = req.params;
 
-export async function deleteUser(field: FilterQuery<User>) {
-  try {
-    const user = await UserModel.findOne(field);
-
-    if (!user) {
-      throw new Error(`Couldn't find user with ${field}`);
+    const { firstName } = req.body;
+    if (!firstName) {
+      return res.sendStatus(400);
     }
-    await UserModel.deleteOne(field);
-    console.log(`deleted user with ${field}`);
-  } catch (error: any) {
-    console.log(error, { message: error.message });
+    const user = await getUserById(id);
+    user!.firstName = firstName;
+
+    return res.status(200).json(user).end();
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
   }
-}
+};

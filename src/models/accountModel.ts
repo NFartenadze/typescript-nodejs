@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import { Account } from "../classes/Account";
 import { userSchema } from "./userModel";
-import { transactionSchema } from "./transactionMode";
+import { transactionSchema } from "./transactionModel";
 
 type AccountSchema = Account;
 export const accountSchema = new Schema<AccountSchema>(

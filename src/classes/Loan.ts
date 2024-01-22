@@ -2,13 +2,13 @@ import { User } from "./User";
 import { Transaction } from "./Transaction";
 
 class Loan {
-  private loanAmount: number;
-  private interestRate: number;
-  private repaymentPeriodMonths: number;
-  private remainingAmount: number;
-  private startDate: Date;
-  private user: User;
-  private repaymentHistory: Transaction[] = [];
+  loanAmount: number;
+  interestRate: number;
+  repaymentPeriodMonths: number;
+  user: User;
+  remainingAmount: number;
+  startDate: Date;
+  repaymentHistory: Transaction[] = [];
 
   constructor(
     loanAmount: number,

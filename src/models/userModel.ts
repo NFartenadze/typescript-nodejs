@@ -8,6 +8,7 @@ type UserSchema = User;
 
 export const userSchema = new Schema<UserSchema>(
   {
+    id: { type: String },
     firstName: { type: String },
     lastName: { type: String },
     email: { type: String },

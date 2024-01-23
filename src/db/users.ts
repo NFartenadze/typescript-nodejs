@@ -1,5 +1,3 @@
-// i am planning to extract model methods into readable functions and move them in db folder with their relative names. it will make controller functions simpler
-
 import { UserModel } from "../models/userModel";
 
 export const getUsers = () => UserModel.find();

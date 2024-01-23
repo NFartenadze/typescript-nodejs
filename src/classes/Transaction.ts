@@ -1,6 +1,12 @@
-type TransferType = "transfer" | "deposit" | "withdraw" | "receive" | "loan-payment";
+type TransferType =
+  | "transfer"
+  | "deposit"
+  | "withdraw"
+  | "receive"
+  | "loan-payment";
 class Transaction {
   constructor(
+    public transactionId: string,
     public amount: number,
     public type: TransferType,
     public performedAt: Date
@@ -9,7 +15,7 @@ class Transaction {
   }
 
   getTransactionDetails(): string {
-    return `Transaction Amount: ${this.amount}, Type: ${this.type}, Performed At: ${this.performedAt}`;
+    return `Transaction Amount: ${this.amount}, Type: ${this.type}, Performed At: ${this.performedAt}, Transaction Id: ${this.transactionId}`;
   }
 }
 

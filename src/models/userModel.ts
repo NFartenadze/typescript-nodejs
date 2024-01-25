@@ -1,8 +1,8 @@
 import { Schema, model } from "mongoose";
 import { User } from "../classes/User";
 
-import { CreditCard } from "../classes/CreditCard";
-import { CreditScore } from "../classes/CreditScore";
+import { creditCardSchema } from "./creditCardModel";
+import { creditScoreSchema } from "./creditScoreModel";
 
 type UserSchema = User;
 
@@ -15,8 +15,8 @@ export const userSchema = new Schema<UserSchema>(
     phoneNumber: { type: String },
     address: { type: String },
     dateOfBirth: { type: Date },
-    creditCard: { type: CreditCard },
-    creditScore: { type: CreditScore },
+    creditCard: { type: creditCardSchema },
+    creditScore: { type: creditScoreSchema},
   },
   {
     collection: "users",

@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import { CreditCard } from "../classes/CreditCard";
-import { userSchema } from "./userModel";
+import { User } from "../classes/User";
 
 type CreditCardSchema = CreditCard;
 
@@ -9,13 +9,13 @@ export const creditCardSchema = new Schema<CreditCardSchema>(
     cardNumber: { type: String },
     creditLimit: { type: Number },
     currentBalance: { type: Number },
-    user: { type: userSchema },
+    // user: { type: User },
   },
   {
     collection: "credit-card",
   }
 );
 
-const CreditCardModel = model<CreditCardSchema>("Bank", creditCardSchema);
+const CreditCardModel = model<CreditCardSchema>("CreditCard", creditCardSchema);
 
 export { CreditCardModel };

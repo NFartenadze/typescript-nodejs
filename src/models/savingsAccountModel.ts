@@ -18,6 +18,9 @@ export const savingsAccountSchema = new Schema<SavingsAccountSchema>(
   }
 );
 
-const SavingsModel = model<SavingsAccountSchema>("User", savingsAccountSchema);
+const SavingsModel = model<SavingsAccountSchema>(
+  "SavingAccount",
+  savingsAccountSchema
+);
 
 export { SavingsModel };

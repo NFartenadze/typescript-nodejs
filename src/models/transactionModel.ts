@@ -18,6 +18,9 @@ export const transactionSchema = new Schema<TransactionSchema>(
   }
 );
 
-const TransactionModel = model<TransactionSchema>("User", transactionSchema);
+const TransactionModel = model<TransactionSchema>(
+  "Transaction",
+  transactionSchema
+);
 
 export { TransactionModel };

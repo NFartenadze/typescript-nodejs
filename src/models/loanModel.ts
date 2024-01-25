@@ -20,6 +20,6 @@ export const loanSchema = new Schema<LoanSchema>(
   }
 );
 
-const LoanModel = model<LoanSchema>("User", loanSchema);
+const LoanModel = model<LoanSchema>("Loan", loanSchema);
 
 export { LoanModel };

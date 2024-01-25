@@ -1,6 +1,12 @@
 import { AccountModel } from "../models/accountModel";
 
 export const getAccounts = () => AccountModel.find();
+
+export const createAccount = async (values: Record<string, any>) => {
+  const account = await AccountModel.create(values);
+  return account.toObject();
+};
+
 export const getAccountByNumber = (accountNumber: string) =>
   AccountModel.findOne({ accountNumber });
 

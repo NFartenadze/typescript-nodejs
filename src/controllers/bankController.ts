@@ -3,7 +3,7 @@ import { Account } from "../classes/Account";
 import { Bank } from "../classes/Bank";
 import { User } from "../classes/User";
 
-import { BankModel } from "../models/BankModel";
+import { BankModel } from "../models/bankModel";
 
 type FieldValue = string | Array<Account> | Array<User>;
 

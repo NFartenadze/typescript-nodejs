@@ -5,10 +5,10 @@ import {
   getBank,
   getBanks,
   deleteBank,
-} from "../services/bankService";
+} from "../controllers/bankController";
 import { Bank } from "../classes/Bank";
 
-describe.only("Bank Service Integration Tests", () => {
+describe("Bank Service Integration Tests", () => {
   dotenv.config();
 
   const payload = new Bank("swedish");

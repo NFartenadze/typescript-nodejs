@@ -1,6 +1,4 @@
 import { Schema, model } from "mongoose";
-import { Account } from "../classes/Account";
-import { User } from "../classes/User";
 import { Bank } from "../classes/Bank";
 import { accountSchema } from "./accountModel";
 import { userSchema } from "./userModel";

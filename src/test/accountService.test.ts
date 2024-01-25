@@ -5,7 +5,7 @@ import {
   getAccounts,
   getAccount,
   deleteAccount,
-} from "../services/accountService";
+} from "../controllers/accountController";
 import { Account } from "../classes/Account";
 import { User } from "../classes/User";
 

@@ -1,9 +1,12 @@
 import express from "express";
-import { createNewCreditCard, getCreditCards } from "../controllers/creditCardController";
+import {
+  createNewCreditCard,
+  getAllCreditCards,
+} from "../controllers/creditCardController";
 
 const router = express.Router();
 
-router.get("/", getCreditCards);
+router.get("/", getAllCreditCards);
 router.post("/", createNewCreditCard);
 
 export default router;

@@ -3,9 +3,9 @@ import { SavingsAccount } from "../classes/SavingsAccount";
 import { userSchema } from "./userModel";
 import { transactionSchema } from "./transactionModel";
 
-type SavingsAccountSchema = SavingsAccount;
+type SavingAccountSchema = SavingsAccount;
 
-export const savingsAccountSchema = new Schema<SavingsAccountSchema>(
+export const savingsAccountSchema = new Schema<SavingAccountSchema>(
   {
     accountNumber: { type: String },
     owner: { type: userSchema },
@@ -18,9 +18,9 @@ export const savingsAccountSchema = new Schema<SavingsAccountSchema>(
   }
 );
 
-const SavingsAccountModel = model<SavingsAccountSchema>(
+const SavingAccountModel = model<SavingAccountSchema>(
   "SavingAccount",
   savingsAccountSchema
 );
 
-export { SavingsAccountModel };
+export { SavingAccountModel };

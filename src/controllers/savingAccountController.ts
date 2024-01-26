@@ -1,9 +1,9 @@
 import express from "express";
 
 import {
-  createSavingsAccount,
-  deleteSavingsAccountByNumber,
-  getSavingsAccounts,
+  createSavingAccount,
+  deleteSavingAccountByNumber,
+  getSavingAccounts,
 } from "../db/savingAccount";
 
 export const getAllSavingAccounts = async (
@@ -11,7 +11,7 @@ export const getAllSavingAccounts = async (
   res: express.Response
 ) => {
   try {
-    const savingAccounts = await getSavingsAccounts();
+    const savingAccounts = await getSavingAccounts();
     return res.status(200).json(savingAccounts);
   } catch (error) {
     console.log(error);
@@ -24,7 +24,7 @@ export const createNewSavingAccount = async (
 ) => {
   try {
     console.error(req.body);
-    const savingAccount = await createSavingsAccount(req.body);
+    const savingAccount = await createSavingAccount(req.body);
     return res.status(201).json(savingAccount);
   } catch (error) {
     console.log(error);
@@ -38,7 +38,7 @@ export const deleteSavingAccount = async (
 ) => {
   try {
     const { id } = req.params;
-    const deletedSavingAccount = await deleteSavingsAccountByNumber(id);
+    const deletedSavingAccount = await deleteSavingAccountByNumber(id);
     return res.json(deletedSavingAccount);
   } catch (error) {
     console.log(error);

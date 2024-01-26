@@ -1,9 +1,12 @@
 import express from "express";
-import { createNewCreditScore, getCreditScores } from "../controllers/creditScoreController";
+import {
+  createNewCreditScore,
+  getAllCreditScores,
+} from "../controllers/creditScoreController";
 
 const router = express.Router();
 
-router.get("/", getCreditScores);
+router.get("/", getAllCreditScores);
 router.post("/", createNewCreditScore);
 
 export default router;

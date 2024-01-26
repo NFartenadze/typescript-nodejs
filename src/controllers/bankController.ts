@@ -1,9 +1,4 @@
-import { FilterQuery } from "mongoose";
-import { Account } from "../classes/Account";
-import { Bank } from "../classes/Bank";
-import { User } from "../classes/User";
 import express from "express";
-import { BankModel } from "../models/bankModel";
 import { createBank, getBanks } from "../db/bank";
 
 export const getAllBanks = async (

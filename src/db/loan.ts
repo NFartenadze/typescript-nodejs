@@ -1,7 +1,7 @@
 import { LoanModel } from "../models/loanModel";
 
 export const getLoans = () => LoanModel.find();
-export const getLoansByUserId = (userId: string) =>
+export const getLoanByUserId = (userId: string) =>
   LoanModel.findOne({ userId });
 
 export const createLoan = async (values: Record<string, any>) => {
@@ -9,14 +9,14 @@ export const createLoan = async (values: Record<string, any>) => {
   return loan.toObject();
 };
 
-export const updateLoansByUserId = (
+export const updateLoanByUserId = (
   userId: string,
   values: Record<string, any>
 ) => {
   LoanModel.findByIdAndUpdate(userId, values);
 };
 
-export const deleteLoansByUserId = (userId: string) =>
+export const deleteLoanByUserId = (userId: string) =>
   LoanModel.findOneAndDelete({
     userId,
   });

@@ -4,7 +4,6 @@ export const getBanks = () => BankModel.find();
 export const getBankByName = (name: string) => BankModel.findOne({ name });
 
 export const createBank = async (values: Record<string, any>) => {
-  console.log(values)
   const bank = await BankModel.create(values);
   return bank.toObject();
 };

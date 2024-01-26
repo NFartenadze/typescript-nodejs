@@ -1,7 +1,6 @@
 import express from "express";
 import usersRoutes from "./users";
 import bankRoutes from "./bank";
-import accountRoutes from "./account";
 
 // configuring routes
 const router = express.Router();

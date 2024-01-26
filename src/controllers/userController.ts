@@ -1,7 +1,12 @@
 import express from "express";
 
-import { createUser, deleteUserById, getUserById, getUsers } from "../db/users";
-import { User } from "../classes/User";
+import {
+  clearUserCollection,
+  createUser,
+  deleteUserById,
+  getUserById,
+  getUsers,
+} from "../db/users";
 
 export const getAllUsers = async (
   req: express.Request,
@@ -20,7 +25,8 @@ export const createNewUser = async (
   res: express.Response
 ) => {
   try {
-    const user = await createUser(req.body as User);
+    console.error(req.body);
+    const user = await createUser(req.body);
     return res.status(201).json(user);
   } catch (error) {
     console.log(error);
@@ -28,37 +34,25 @@ export const createNewUser = async (
   }
 };
 
-// export const deleteUsers = async (
-//   req: express.Request,
-//   res: express.Response
-// ) => {
-//   try {
-//     const { id } = req.params;
-//     const deletedUser = await deleteUserById(id);
-//     return res.json(deletedUser);
-//   } catch (error) {
-//     console.log(error);
-//     return res.sendStatus(400);
-//   }
-// };
+export const deleteUser = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { id } = req.params;
+    const deletedUser = await deleteUserById(id);
+    return res.json(deletedUser);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
 
-// export const updateUser = async (
-//   req: express.Request,
-//   res: express.Response
-// ) => {
-//   try {
-//     const { id } = req.params;
-
-//     const { firstName } = req.body;
-//     if (!firstName) {
-//       return res.sendStatus(400);
-//     }
-//     const user = await getUserById(id);
-//     user!.firstName = firstName;
-
-//     return res.status(200).json(user).end();
-//   } catch (error) {
-//     console.log(error);
-//     return res.sendStatus(400);
-//   }
-// };
+export const deleteAllUsers = async () => {
+  try {
+    await clearUserCollection();
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};

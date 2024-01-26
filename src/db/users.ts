@@ -1,14 +1,12 @@
 import { UserModel } from "../models/userModel";
-import { User } from "../classes/User";
 
 export const getUsers = () => UserModel.find();
-export const getUserByEmail = (email: string) => UserModel.findOne({ email });
 export const getUserById = (id: string) => UserModel.findById(id);
 
-export const createUser = async (user: User) => {
-  const userModel = new UserModel(user);
+export const createUser = async (values: Record<string, any>) => {
+  const userModel = new UserModel(values);
   const savedUser = await userModel.save();
-  return savedUser.toObject();
+  return savedUser.toJSON();
 };
 
 export const deleteUserById = (id: string) =>
@@ -18,4 +16,8 @@ export const deleteUserById = (id: string) =>
 
 export const updateUserById = (id: string, values: Record<string, any>) => {
   UserModel.findByIdAndUpdate(id, values);
+};
+
+export const clearUserCollection = async () => {
+  await UserModel.deleteMany({});
 };

@@ -7,10 +7,10 @@ export const getCreditScoreByUserEmail = (email: string) =>
 export const getCreditScoreByUserId = (id: string) =>
   CreditScoreModel.findOne({ id });
 
-export const deleteCreditScoreByUserId = (id: string) =>
-  CreditScoreModel.findOneAndDelete({
-    id,
-  });
+export const createCreditScore = async (values: Record<string, any>) => {
+  const creditScore = await CreditScoreModel.create(values);
+  return creditScore.toObject();
+};
 
 export const updateCreditScoreByUserId = (
   id: string,
@@ -18,3 +18,8 @@ export const updateCreditScoreByUserId = (
 ) => {
   CreditScoreModel.findOneAndUpdate({ id }, values);
 };
+
+export const deleteCreditScoreByUserId = (id: string) =>
+  CreditScoreModel.findOneAndDelete({
+    id,
+  });

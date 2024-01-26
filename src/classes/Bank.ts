@@ -58,8 +58,7 @@ class Bank {
     const creditCard = new CreditCard(
       this.generateCreditCardNumber(),
       creditLimit,
-      0,
-      user
+      0
     );
     user.assignCreditCard(creditCard);
     return creditCard;

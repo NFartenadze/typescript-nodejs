@@ -1,17 +1,22 @@
-import { SavingsModel } from "../models/savingsAccountModel";
+import { SavingsAccountModel } from "../models/savingsAccountModel";
 
-export const getSavingsAccounts = () => SavingsModel.find();
+export const getSavingsAccounts = () => SavingsAccountModel.find();
 export const getSavingsAccountByNumber = (accountNumber: string) =>
-  SavingsModel.findOne({ accountNumber });
+  SavingsAccountModel.findOne({ accountNumber });
 
-export const deleteSavingsAccountByNumber = (accountNumber: string) =>
-  SavingsModel.findOneAndDelete({
-    accountNumber,
-  });
+export const createSavingsAccount = async (values: Record<string, any>) => {
+  const savingsAccount = await SavingsAccountModel.create(values);
+  return savingsAccount.toObject();
+};
 
 export const updateSavingsAccountByNumber = (
   accountNumber: string,
   values: Record<string, any>
 ) => {
-  SavingsModel.findOneAndUpdate({ accountNumber }, values);
+  SavingsAccountModel.findOneAndUpdate({ accountNumber }, values);
 };
+
+export const deleteSavingsAccountByNumber = (accountNumber: string) =>
+  SavingsAccountModel.findOneAndDelete({
+    accountNumber,
+  });

@@ -9,7 +9,7 @@ class User {
     public email: string,
     public phoneNumber: string,
     public address: string,
-    public dateOfBirth: Date,
+    public dateOfBirth: string,
     public creditCard?: CreditCard,
     public creditScore?: CreditScore
   ) {}
@@ -19,7 +19,7 @@ class User {
       Email: ${this.email}
       Phone Number: ${this.phoneNumber}
       Address: ${this.address}
-      Date of Birth: ${this.dateOfBirth.toISOString().split("T")[0]}
+      Date of Birth: ${this.dateOfBirth}
     `;
   }
 

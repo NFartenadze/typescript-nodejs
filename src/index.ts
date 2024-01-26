@@ -3,12 +3,14 @@ import express from "express";
 import { errorHandler } from "./middleware/errorHandler";
 import mongoose from "mongoose";
 import router from "./router";
+import bodyParser from "body-parser";
 
 dotenv.config();
 
 const app = express();
 
 app.use(errorHandler);
+app.use(bodyParser.json());
 
 mongoose
   .connect(process.env.MONGODB_URI!)

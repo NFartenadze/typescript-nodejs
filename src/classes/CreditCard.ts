@@ -1,11 +1,9 @@
-import { User } from "./User";
 
 class CreditCard {
   constructor(
     public cardNumber: string,
     public creditLimit: number,
     public currentBalance: number = 0,
-    public user: User
   ) {}
 
   makePurchase(amount: number): void {

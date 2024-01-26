@@ -6,7 +6,7 @@ import { creditScoreSchema } from "./creditScoreModel";
 
 type UserSchema = User;
 
-export const userSchema = new Schema<UserSchema>(
+export const userSchema = new Schema<User>(
   {
     id: { type: String },
     firstName: { type: String },
@@ -14,9 +14,9 @@ export const userSchema = new Schema<UserSchema>(
     email: { type: String },
     phoneNumber: { type: String },
     address: { type: String },
-    dateOfBirth: { type: Date },
+    dateOfBirth: { type: String },
     creditCard: { type: creditCardSchema },
-    creditScore: { type: creditScoreSchema},
+    creditScore: { type: creditScoreSchema },
   },
   {
     collection: "users",

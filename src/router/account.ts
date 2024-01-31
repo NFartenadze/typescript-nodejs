@@ -9,8 +9,8 @@ import {
 const router = express.Router();
 
 router.get("/", getAllAccounts);
-router.get("/:id", getSpecificAccount);
+router.get("/:number", getSpecificAccount);
 router.post("/", createNewAccount);
-router.delete("/", deleteAccount);
+router.delete("/number", deleteAccount);
 
 export default router;

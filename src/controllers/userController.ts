@@ -1,19 +1,12 @@
 import express from "express";
-
-import {
-  clearUserCollection,
-  createUser,
-  deleteUserById,
-  getUserById,
-  getUsers,
-} from "../db/users";
+import { UserModel } from "../models/userModel";
 
 export const getAllUsers = async (
   req: express.Request,
   res: express.Response
 ) => {
   try {
-    const users = await getUsers();
+    const users = await UserModel.find();
     if (!users) {
       return res.status(404).json({ message: "No Users Found" });
     }
@@ -29,7 +22,7 @@ export const getSpecificUser = async (
 ) => {
   try {
     const { id } = req.params;
-    const user = await getUserById(id);
+    const user = await UserModel.findOne({ _id: id });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -45,8 +38,7 @@ export const createNewUser = async (
   res: express.Response
 ) => {
   try {
-    console.error(req.body);
-    const user = await createUser(req.body);
+    const user = await UserModel.create(req.body);
     return res.status(201).json(user);
   } catch (error) {
     console.log(error);
@@ -62,16 +54,30 @@ export const deleteUser = async (
     const { id } = req.params;
     console.log(id);
     // Check if user exists
-    const user = await getUserById(id);
+    const user = await UserModel.findOne({ _id: id });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
     console.log(user);
 
-    const deletedUser = await deleteUserById(id);
+    const deletedUser = await UserModel.findOneAndDelete({ _id: id });
     return res.json(deletedUser);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const updateUser = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { id } = req.params;
+    const user = await UserModel.findOneAndUpdate({ _id: id }, req.body);
+    return res.status(201).json(user);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
   }
 };

@@ -1,9 +1,6 @@
 import { Schema, model } from "mongoose";
-import { Transaction } from "../classes/Transaction";
 
-type TransactionSchema = Transaction;
-
-export const transactionSchema = new Schema<TransactionSchema>(
+export const transactionSchema = new Schema(
   {
     transactionId: { type: String },
     amount: { type: Number },
@@ -18,9 +15,6 @@ export const transactionSchema = new Schema<TransactionSchema>(
   }
 );
 
-const TransactionModel = model<TransactionSchema>(
-  "Transaction",
-  transactionSchema
-);
+const TransactionModel = model("Transaction", transactionSchema);
 
 export { TransactionModel };

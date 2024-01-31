@@ -4,6 +4,7 @@ import {
   deleteAccount,
   getAllAccounts,
   getSpecificAccount,
+  updateAccount,
 } from "../controllers/accountController";
 
 const router = express.Router();
@@ -11,6 +12,7 @@ const router = express.Router();
 router.get("/", getAllAccounts);
 router.get("/:number", getSpecificAccount);
 router.post("/", createNewAccount);
-router.delete("/number", deleteAccount);
+router.delete("/:number", deleteAccount);
+router.put("/:number", updateAccount);
 
 export default router;

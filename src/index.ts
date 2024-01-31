@@ -7,23 +7,19 @@ import bodyParser from "body-parser";
 
 dotenv.config();
 
-const app = express();
-
-app.use(errorHandler);
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
 mongoose
   .connect(process.env.MONGODB_URI!)
   .then(() => {
+    const app = express();
+
+    app.use(errorHandler);
+    app.use(bodyParser.json());
+    app.use("/api", router());
+    app.listen(3000, () => {
+      console.log("Server started on port 3000");
+    });
     console.log("Connected to MongoDb");
   })
   .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
   });
-
-app.use("/", router());
-
-app.listen(3000, () => {
-  console.log("Server started on port 3000");
-});

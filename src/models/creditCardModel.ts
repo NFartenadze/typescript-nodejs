@@ -1,10 +1,6 @@
 import { Schema, model } from "mongoose";
-import { CreditCard } from "../classes/CreditCard";
-import { User } from "../classes/User";
 
-type CreditCardSchema = CreditCard;
-
-export const creditCardSchema = new Schema<CreditCardSchema>(
+export const creditCardSchema = new Schema(
   {
     cardNumber: { type: String },
     creditLimit: { type: Number },
@@ -16,6 +12,6 @@ export const creditCardSchema = new Schema<CreditCardSchema>(
   }
 );
 
-const CreditCardModel = model<CreditCardSchema>("CreditCard", creditCardSchema);
+const CreditCardModel = model("CreditCard", creditCardSchema);
 
 export { CreditCardModel };

@@ -1,11 +1,7 @@
 import { Schema, model } from "mongoose";
 import { userSchema } from "./userModel";
-import { Loan } from "../classes/Loan";
-import { transactionSchema } from "./transactionModel";
 
-type LoanSchema = Loan;
-
-export const loanSchema = new Schema<LoanSchema>(
+export const loanSchema = new Schema(
   {
     loanAmount: { type: Number },
     interestRate: { type: Number },
@@ -20,6 +16,6 @@ export const loanSchema = new Schema<LoanSchema>(
   }
 );
 
-const LoanModel = model<LoanSchema>("Loan", loanSchema);
+const LoanModel = model("Loan", loanSchema);
 
 export { LoanModel };

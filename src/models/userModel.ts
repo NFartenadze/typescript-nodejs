@@ -1,12 +1,6 @@
 import { Schema, model } from "mongoose";
-import { User } from "../classes/User";
 
-import { creditCardSchema } from "./creditCardModel";
-import { creditScoreSchema } from "./creditScoreModel";
-
-type UserSchema = User;
-
-export const userSchema = new Schema<User>(
+export const userSchema = new Schema(
   {
     id: { type: String },
     firstName: { type: String },
@@ -23,6 +17,6 @@ export const userSchema = new Schema<User>(
   }
 );
 
-const UserModel = model<UserSchema>("User", userSchema);
+const UserModel = model("User", userSchema);
 
 export { UserModel };

@@ -1,10 +1,8 @@
 import { Schema, model } from "mongoose";
-import { Account } from "../classes/Account";
 import { userSchema } from "./userModel";
 import { transactionSchema } from "./transactionModel";
 
-type AccountSchema = Account;
-export const accountSchema = new Schema<AccountSchema>(
+export const accountSchema = new Schema(
   {
     accountNumber: { type: String },
     owner: { type: Schema.Types.ObjectId, ref: "User" },
@@ -16,6 +14,6 @@ export const accountSchema = new Schema<AccountSchema>(
   }
 );
 
-const AccountModel = model<AccountSchema>("Account", accountSchema);
+const AccountModel = model("Account", accountSchema);
 
 export { AccountModel };

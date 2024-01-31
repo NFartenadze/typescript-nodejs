@@ -13,7 +13,7 @@ export const loanSchema = new Schema<LoanSchema>(
     remainingAmount: { type: Number },
     startDate: { type: Date },
     user: { type: userSchema },
-    repaymentHistory: { type: [transactionSchema] },
+    repaymentHistory: [{ type: Schema.Types.ObjectId, ref: "Transaction" }],
   },
   {
     collection: "loan",

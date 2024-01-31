@@ -8,8 +8,8 @@ type BankSchema = Bank;
 const bankSchema = new Schema<BankSchema>(
   {
     name: { type: String },
-    accounts: { type: [accountSchema] },
-    users: { type: [userSchema] },
+    accounts: [{ type: Schema.Types.ObjectId, ref: "Account" }],
+    users: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   {
     collection: "banks",

@@ -7,7 +7,7 @@ type CreditScoreSchema = CreditScore;
 
 export const creditScoreSchema = new Schema<CreditScoreSchema>(
   {
-    // user: { type: User},
+    user: [{ type: Schema.Types.ObjectId, ref: "User" }],
     score: { type: Number },
   },
   {

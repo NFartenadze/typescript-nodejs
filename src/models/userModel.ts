@@ -15,8 +15,8 @@ export const userSchema = new Schema<User>(
     phoneNumber: { type: String },
     address: { type: String },
     dateOfBirth: { type: String },
-    creditCard: { type: creditCardSchema },
-    creditScore: { type: creditScoreSchema },
+    creditCard: { type: Schema.Types.ObjectId, ref: "CreditCard" },
+    creditScore: { type: Schema.Types.ObjectId, ref: "CreditScore" },
   },
   {
     collection: "users",

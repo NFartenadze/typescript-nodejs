@@ -7,9 +7,9 @@ type AccountSchema = Account;
 export const accountSchema = new Schema<AccountSchema>(
   {
     accountNumber: { type: String },
-    owner: { type: userSchema },
+    owner: { type: Schema.Types.ObjectId, ref: "User" },
     balance: { type: Number },
-    transactionHistory: { type: [transactionSchema] },
+    transactionHistory: [{ type: Schema.Types.ObjectId, ref: "Transaction" }],
   },
   {
     collection: "accounts",

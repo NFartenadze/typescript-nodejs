@@ -9,7 +9,7 @@ export const creditCardSchema = new Schema<CreditCardSchema>(
     cardNumber: { type: String },
     creditLimit: { type: Number },
     currentBalance: { type: Number },
-    // user: { type: User },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
   },
   {
     collection: "credit-card",

@@ -3,6 +3,7 @@ import express from "express";
 import {
   createCreditCard,
   deleteCreditCardByUserId,
+  getCreditCardByUserId,
   getCreditCards,
 } from "../db/creditCard";
 
@@ -32,13 +33,32 @@ export const createNewCreditCard = async (
   }
 };
 
+export const getSpecificCreditCard = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { userId } = req.params;
+    const creditCard = await getCreditCardByUserId(userId);
+    return res.status(200).json(creditCard);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
 export const deleteCreditCard = async (
   req: express.Request,
   res: express.Response
 ) => {
   try {
-    const { id } = req.params;
-    const deletedCreditCard = await deleteCreditCardByUserId(id);
+    const { userId } = req.params;
+
+    const creditCard = await getCreditCardByUserId(userId);
+    if (!creditCard) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    console.log(creditCard);
+    const deletedCreditCard = await deleteCreditCardByUserId(userId);
     return res.json(deletedCreditCard);
   } catch (error) {
     console.log(error);

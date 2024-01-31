@@ -10,7 +10,7 @@ export const createTransaction = async (values: Record<string, any>) => {
 
 export const deleteTransactionById = (id: string) =>
   TransactionModel.findOneAndDelete({
-    id,
+    _id: id,
   });
 
 export const updateTransactionById = (

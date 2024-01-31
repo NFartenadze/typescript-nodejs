@@ -15,3 +15,4 @@ export const deleteBankByName = (name: string) =>
 export const updateBankByName = (name: string, values: Record<string, any>) => {
   BankModel.findOneAndUpdate({ name }, values);
 };
+

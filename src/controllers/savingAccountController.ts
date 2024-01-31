@@ -3,6 +3,7 @@ import express from "express";
 import {
   createSavingAccount,
   deleteSavingAccountByNumber,
+  getSavingAccountByNumber,
   getSavingAccounts,
 } from "../db/savingAccount";
 
@@ -12,6 +13,20 @@ export const getAllSavingAccounts = async (
 ) => {
   try {
     const savingAccounts = await getSavingAccounts();
+    return res.status(200).json(savingAccounts);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
+
+export const getSpecificSavingAccount = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { number } = req.params;
+    const savingAccounts = await getSavingAccountByNumber(number);
     return res.status(200).json(savingAccounts);
   } catch (error) {
     console.log(error);
@@ -37,8 +52,14 @@ export const deleteSavingAccount = async (
   res: express.Response
 ) => {
   try {
-    const { id } = req.params;
-    const deletedSavingAccount = await deleteSavingAccountByNumber(id);
+    const { number } = req.params;
+
+    const savingAccount = await getSavingAccountByNumber(number);
+    if (!savingAccount) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    console.log(savingAccount);
+    const deletedSavingAccount = await deleteSavingAccountByNumber(number);
     return res.json(deletedSavingAccount);
   } catch (error) {
     console.log(error);

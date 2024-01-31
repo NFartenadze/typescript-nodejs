@@ -1,5 +1,10 @@
 import express from "express";
-import { createBank, getBanks } from "../db/bank";
+import {
+  createBank,
+  deleteBankByName,
+  getBankByName,
+  getBanks,
+} from "../db/bank";
 
 export const getAllBanks = async (
   req: express.Request,
@@ -24,5 +29,40 @@ export const createNewBank = async (
   } catch (error) {
     console.log(error);
     return res.sendStatus(400);
+  }
+};
+
+export const getSpecificBank = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { name } = req.params;
+    const bank = await getBankByName(name);
+    return res.status(201).json(bank);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
+
+export const deleteBank = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { name } = req.params;
+    console.log(name);
+    // Check if bank exists
+    const bank = await getBankByName(name);
+    if (!bank) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    console.log(bank);
+    const deletedUser = await deleteBankByName(name);
+    return res.json(deletedUser);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };

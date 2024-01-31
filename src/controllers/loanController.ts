@@ -1,6 +1,11 @@
 import express from "express";
 
-import { createLoan, deleteLoanByUserId, getLoans } from "../db/loan";
+import {
+  createLoan,
+  deleteLoanByUserId,
+  getLoanByUserId,
+  getLoans,
+} from "../db/loan";
 
 export const getAllLoans = async (
   req: express.Request,
@@ -14,6 +19,20 @@ export const getAllLoans = async (
     return res.sendStatus(400);
   }
 };
+export const getSpecificLoan = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { id } = req.params;
+    const loans = await getLoanByUserId(id);
+    return res.status(200).json(loans);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
+
 export const createNewLoan = async (
   req: express.Request,
   res: express.Response
@@ -33,13 +52,17 @@ export const deleteLoan = async (
   res: express.Response
 ) => {
   try {
-    const { id } = req.params;
-    const deletedLoan = await deleteLoanByUserId(id);
+    const { userId } = req.params;
+
+    const loan = await getLoanByUserId(userId);
+    if (!loan) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    console.log(loan);
+    const deletedLoan = await deleteLoanByUserId(userId);
     return res.json(deletedLoan);
   } catch (error) {
     console.log(error);
     return res.sendStatus(400);
   }
 };
-
-

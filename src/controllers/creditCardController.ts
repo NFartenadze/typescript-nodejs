@@ -71,9 +71,10 @@ export const updateCreditCard = async (
     const { userId } = req.params;
     const updatedCreditCard = await CreditCardModel.findOneAndUpdate(
       { userId },
-      req.body
+      req.body,
+      { new: true }
     );
-    return res.json(updateCreditCard);
+    return res.json(updatedCreditCard);
   } catch (error) {
     console.log(error);
     return res.sendStatus(400);

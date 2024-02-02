@@ -68,8 +68,11 @@ export const updateBank = async (
 ) => {
   try {
     const { name } = req.params;
-    const deletedUser = await BankModel.findOneAndUpdate({ name }, req.body);
-    return res.json(deletedUser);
+
+    const updatedBank = await BankModel.findOneAndUpdate({ name }, req.body, {
+      new: true,
+    });
+    return res.json(updatedBank);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error" });

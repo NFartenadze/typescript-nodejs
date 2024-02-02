@@ -70,11 +70,12 @@ export const updateTransaction = async (
   try {
     const { id } = req.params;
 
-    const transaction = await TransactionModel.findByIdAndUpdate(
+    const updatedTransaction = await TransactionModel.findByIdAndUpdate(
       { _id: id },
-      req.body
+      req.body,
+      { new: true }
     );
-    return res.status(200).json(transaction);
+    return res.status(200).json(updatedTransaction);
   } catch (error) {
     console.log(error);
     return res.sendStatus(400);

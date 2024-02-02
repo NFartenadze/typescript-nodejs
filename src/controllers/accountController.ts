@@ -74,9 +74,10 @@ export const updateAccount = async (
     const { number } = req.params;
     const updatedAccount = await AccountModel.findOneAndUpdate(
       { accountNumber: number },
-      req.body
+      req.body,
+      { new: true }
     );
-    return res.json(updateAccount);
+    return res.json(updatedAccount);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error" });

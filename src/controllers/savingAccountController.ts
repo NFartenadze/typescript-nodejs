@@ -73,11 +73,12 @@ export const updateSavingAccount = async (
 ) => {
   try {
     const { number } = req.params;
-    const savingAccounts = await SavingAccountModel.findOneAndUpdate(
+    const updatedSavingAccount = await SavingAccountModel.findOneAndUpdate(
       { accountNumber: number },
-      req.body
+      req.body,
+      { new: true }
     );
-    return res.status(200).json(savingAccounts);
+    return res.status(200).json(updatedSavingAccount);
   } catch (error) {
     console.log(error);
     return res.sendStatus(400);

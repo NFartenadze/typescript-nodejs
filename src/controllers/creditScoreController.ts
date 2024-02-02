@@ -69,11 +69,12 @@ export const updateCreditScore = async (
 ) => {
   try {
     const { id } = req.params;
-    const creditScores = await CreditScoreModel.findOneAndUpdate(
+    const updatedCreditScore = await CreditScoreModel.findOneAndUpdate(
       { _id: id },
-      req.body
+      req.body,
+      { new: true }
     );
-    return res.status(200).json(creditScores);
+    return res.status(200).json(updatedCreditScore);
   } catch (error) {
     console.log(error);
     return res.sendStatus(400);

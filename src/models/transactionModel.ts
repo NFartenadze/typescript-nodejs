@@ -6,7 +6,7 @@ export const transactionSchema = new Schema(
     amount: { type: Number },
     type: {
       type: String,
-      enum: ["transfer", "deposit", "withdraw", "receive"],
+      enum: ["transfer", "deposit", "withdraw", "receive", "repayment"],
     },
     performedAt: { type: Date },
   },

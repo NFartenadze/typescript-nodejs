@@ -67,8 +67,12 @@ export const updateLoan = async (
 ) => {
   try {
     const { id } = req.params;
-    const loans = await LoanModel.findByIdAndUpdate({ _id: id }, req.body);
-    return res.status(200).json(loans);
+    const updatedLoan = await LoanModel.findByIdAndUpdate(
+      { _id: id },
+      req.body,
+      { new: true }
+    );
+    return res.status(200).json(updatedLoan);
   } catch (error) {
     console.log(error);
     return res.sendStatus(400);

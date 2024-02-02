@@ -74,8 +74,12 @@ export const updateUser = async (
 ) => {
   try {
     const { id } = req.params;
-    const user = await UserModel.findOneAndUpdate({ _id: id }, req.body);
-    return res.status(201).json(user);
+    const updatedUser = await UserModel.findOneAndUpdate(
+      { _id: id },
+      req.body,
+      { new: true }
+    );
+    return res.status(201).json(updateUser);
   } catch (error) {
     console.log(error);
     return res.sendStatus(400);

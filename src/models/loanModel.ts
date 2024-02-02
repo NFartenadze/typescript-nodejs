@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-import { userSchema } from "./userModel";
 
 export const loanSchema = new Schema(
   {
@@ -8,7 +7,7 @@ export const loanSchema = new Schema(
     repaymentPeriodMonths: { type: Number },
     remainingAmount: { type: Number },
     startDate: { type: Date },
-    user: { type: userSchema },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
     repaymentHistory: [{ type: Schema.Types.ObjectId, ref: "Transaction" }],
   },
   {

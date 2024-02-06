@@ -1,77 +1,86 @@
-import { FilterQuery } from "mongoose";
-import { Account } from "../classes/Account";
-import { Transaction } from "../classes/Transaction";
-import { User } from "../classes/User";
-
+import express from "express";
 import { AccountModel } from "../models/accountModel";
+import logger from "../helpers/logger";
 
-type FieldValue = User | number | Array<Transaction>;
-
-export async function createAccount(account: Account) {
+export const getAllAccounts = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
-    const acc = await AccountModel.create(account);
-    if (!acc) {
-      throw new Error("error creating account");
-    }
-    console.log(`added account ${account}`);
-    return acc;
-  } catch (error: any) {
-    console.log(error, { message: error.message });
+    const accounts = await AccountModel.find();
+    return res.status(200).json(accounts);
+  } catch (error) {
+    logger.error(error);
+    return res.sendStatus(400);
   }
-}
-
-export async function getAccounts() {
+};
+export const createNewAccount = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
-    const accounts = await AccountModel.find({});
-    if (accounts.length === 0) {
-      throw new Error(`Couldn't find accounts`);
+    const account = await AccountModel.create(req.body);
+    return res.status(201).json(account);
+  } catch (error) {
+    logger.error(error);
+    return res.sendStatus(400);
+  }
+};
+
+export const getSpecificAccount = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { number } = req.params;
+    const account = await AccountModel.findOne({ accountNumber: number });
+    if (!account) {
+      return res.status(404).json({ message: "Account not found" });
     }
-    return accounts;
-  } catch (error: any) {
+    return res.status(200).json(account);
+  } catch (error) {
+    logger.error(error);
+    return res.sendStatus(400);
+  }
+};
+export const deleteAccount = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { number } = req.params;
+    console.log(number);
+    // Check if Account exists
+    const Account = await AccountModel.findOne({ accountNumber: number });
+    if (!Account) {
+      return res.status(404).json({ message: "Account not found" });
+    }
+    console.log(Account);
+
+    const deletedAccount = await AccountModel.findOneAndDelete({
+      accountNumber: number,
+    });
+    return res.json(deletedAccount);
+  } catch (error) {
     console.error(error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-}
+};
 
-export async function getAccount(field: FilterQuery<Account>) {
+export const updateAccount = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
-    const account = await AccountModel.findOne(field);
-    if (!account) {
-      throw new Error(`Couldn't find account with ${field}`);
-    }
-    return account;
-  } catch (error: any) {
+    const { number } = req.params;
+    const updatedAccount = await AccountModel.findOneAndUpdate(
+      { accountNumber: number },
+      req.body,
+      { new: true }
+    );
+    return res.json(updatedAccount);
+  } catch (error) {
     console.error(error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-}
-
-export async function updateAccount(
-  field: FilterQuery<Account>,
-  updateFields: Record<keyof Account, FieldValue>
-) {
-  try {
-    const account = await AccountModel.findOne(field);
-    if (!account) {
-      throw new Error(`Account with ${field} not found`);
-    }
-    await AccountModel.updateOne(field, updateFields);
-    console.log("Account updated successfully:", account);
-  } catch (error: any) {
-    console.log(error);
-    throw new Error("Error Updating Account");
-  }
-}
-
-export async function deleteAccount(field: FilterQuery<Account>) {
-  try {
-    const account = await AccountModel.findOne(field);
-
-    if (!account) {
-      throw new Error(`Account with ${field} not found`);
-    }
-    await AccountModel.deleteOne(field);
-    console.log(`deleted account with ${field}`);
-  } catch (error: any) {
-    console.log(error);
-    throw new Error("Error Deleting Account");
-  }
-}
+};

@@ -1,0 +1,450 @@
+[2024-02-06T15:55:00.814] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getSpecificCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:38:24) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:56:53.613] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getSpecificCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:38:24) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:56:57.755] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getSpecificCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:38:24) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:56:58.631] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getSpecificCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:38:24) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:56:59.327] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getSpecificCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:38:24) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:56:59.820] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getSpecificCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:38:24) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:57:00.270] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getSpecificCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:38:24) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:57:34.711] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updateCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:73:31) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:57:36.573] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updateCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:73:31) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:57:37.221] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updateCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:73:31) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:57:41.591] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updateCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:73:31) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:57:48.919] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updateCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:73:31) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T15:58:00.799] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updateCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:73:31) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOneAndUpdate (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:3242:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T16:05:10.028] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getSpecificCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:38:24) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}
+[2024-02-06T16:05:12.256] [ERROR] default - CastError: Cast to ObjectId failed for value "65bb55f6fe2b6ba3feb80b" (type string) at path "user" for model "CreditCard"
+    at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+    at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+    at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+    at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+    at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+    at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+    at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async getSpecificCreditCard (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/src/controllers/creditCardController.ts:38:24) {
+  stringValue: '"65bb55f6fe2b6ba3feb80b"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: '65bb55f6fe2b6ba3feb80b',
+  path: 'user',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/bson/src/objectid.ts:80:15)
+      at castObjectId (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast/objectid.js:25:12)
+      at SchemaObjectId.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schema/objectId.js:248:12)
+      at SchemaObjectId.SchemaType.applySetters (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1219:12)
+      at SchemaObjectId.SchemaType.castForQuery (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/schemaType.js:1633:15)
+      at cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/cast.js:375:32)
+      at model.Query.Query.cast (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4768:12)
+      at model.Query.Query._castConditions (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2200:10)
+      at model.Query._findOne (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:2484:8)
+      at model.Query.exec (/Users/nikafartenadze/Desktop/PostEduTasks/typescript-nodejs/node_modules/mongoose/lib/query.js:4290:80),
+  valueType: 'string',
+  model: Model { CreditCard }
+}

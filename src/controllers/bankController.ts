@@ -1,79 +1,80 @@
-import { FilterQuery } from "mongoose";
-import { Account } from "../classes/Account";
-import { Bank } from "../classes/Bank";
-import { User } from "../classes/User";
-
+import express from "express";
 import { BankModel } from "../models/bankModel";
+import logger from "../helpers/logger";
 
-type FieldValue = string | Array<Account> | Array<User>;
-
-export async function createBank(newBank: Bank) {
+export const getAllBanks = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
-    const bank = await BankModel.create(newBank);
-    if (!bank) {
-      throw new Error("error creating account");
-    }
-    console.log(`added bank ${bank}`);
-  } catch (error: any) {
-    console.log(error, { message: error.message });
+    const banks = await BankModel.find();
+    return res.status(200).json(banks);
+  } catch (error) {
+    logger.error(error);
+    return res.sendStatus(400);
   }
-}
+};
 
-export async function getBanks() {
+export const createNewBank = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
-    const banks = await BankModel.find({});
-    if (banks.length === 0) {
-      throw new Error(`Couldn't find banks`);
-    }
-    return banks;
-  } catch (error: any) {
-    console.log(error, { message: error.message });
+    const bank = await BankModel.create(req.body);
+    return res.status(201).json(bank);
+  } catch (error) {
+    logger.error(error);
+    return res.sendStatus(400);
   }
-}
+};
 
-export async function getBank(field: FilterQuery<Bank>) {
+export const getSpecificBank = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
-    const bank = await BankModel.findOne(field);
+    const { name } = req.params;
+    const bank = await BankModel.findOne({ name });
+    return res.status(201).json(bank);
+  } catch (error) {
+    logger.error(error);
+    return res.sendStatus(400);
+  }
+};
+
+export const deleteBank = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { name } = req.params;
+    // Check if bank exists
+    const bank = await BankModel.findOne({ name });
     if (!bank) {
-      throw new Error(`Couldn't find bank with ${field}`);
+      return res.status(404).json({ message: "Bank not found" });
     }
     console.log(bank);
-    return bank;
-  } catch (error: any) {
-    console.log(error, { message: error.message });
+    const deletedUser = await BankModel.findOneAndDelete({ name });
+    return res.json(deletedUser);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-}
+};
 
-export async function updateBank(
-  field: FilterQuery<Bank>,
-  updateFields: Record<string, FieldValue>
-) {
+export const updateBank = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
-    const bank = await BankModel.findOne(field);
+    const { name } = req.params;
 
-    if (!bank) {
-      throw new Error(`Couldn't find bank with ${field}`);
-    }
-    await BankModel.updateOne(field, updateFields);
-    console.log("Bank updated successfully:", bank);
-  } catch (error: any) {
-    console.log(error);
-    throw new Error("Error updating bank");
+    const updatedBank = await BankModel.findOneAndUpdate({ name }, req.body, {
+      new: true,
+    });
+    return res.json(updatedBank);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-}
-
-export async function deleteBank(field: FilterQuery<Bank>) {
-  try {
-    const bank = await BankModel.findOne(field);
-
-    if (!bank) {
-      throw new Error(`Couldn't find bank with ${field}`);
-    }
-
-    await BankModel.deleteOne(field);
-    console.log(`deleted bank with ${field}`);
-  } catch (error: any) {
-    console.log(error);
-    throw new Error("Error Deleting Account");
-  }
-}
+};

@@ -1,12 +1,8 @@
 import { Schema, model } from "mongoose";
-import { userSchema } from "./userModel";
-import { CreditScore } from "../classes/CreditScore";
 
-type CreditScoreSchema = CreditScore;
-
-export const creditScoreSchema = new Schema<CreditScoreSchema>(
+export const creditScoreSchema = new Schema(
   {
-    user: { type: userSchema },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
     score: { type: Number },
   },
   {
@@ -14,6 +10,6 @@ export const creditScoreSchema = new Schema<CreditScoreSchema>(
   }
 );
 
-const CreditScoreModel = model<CreditScoreSchema>("Bank", creditScoreSchema);
+const CreditScoreModel = model("CreditScore", creditScoreSchema);
 
 export { CreditScoreModel };

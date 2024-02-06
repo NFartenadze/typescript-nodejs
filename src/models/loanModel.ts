@@ -1,25 +1,20 @@
 import { Schema, model } from "mongoose";
-import { userSchema } from "./userModel";
-import { Loan } from "../classes/Loan";
-import { transactionSchema } from "./transactionModel";
 
-type LoanSchema = Loan;
-
-export const loanSchema = new Schema<LoanSchema>(
+export const loanSchema = new Schema(
   {
     loanAmount: { type: Number },
     interestRate: { type: Number },
     repaymentPeriodMonths: { type: Number },
     remainingAmount: { type: Number },
     startDate: { type: Date },
-    user: { type: userSchema },
-    repaymentHistory: { type: [transactionSchema] },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
+    repaymentHistory: [{ type: Schema.Types.ObjectId, ref: "Transaction" }],
   },
   {
     collection: "loan",
   }
 );
 
-const LoanModel = model<LoanSchema>("User", loanSchema);
+const LoanModel = model("Loan", loanSchema);
 
 export { LoanModel };

@@ -1,19 +1,18 @@
 import { Schema, model } from "mongoose";
-import { userSchema } from "./userModel";
-import { transactionSchema } from "./transactionModel";
 
-export const accountSchema = new Schema(
+export const savingsAccountSchema = new Schema(
   {
     accountNumber: { type: String },
     owner: { type: Schema.Types.ObjectId, ref: "User" },
     balance: { type: Number },
     transactionHistory: [{ type: Schema.Types.ObjectId, ref: "Transaction" }],
+    interestRate: { type: Number },
   },
   {
-    collection: "accounts",
+    collection: "savings-account",
   }
 );
 
-const AccountModel = model("Account", accountSchema);
+const SavingAccountModel = model("SavingAccount", savingsAccountSchema);
 
-export { AccountModel };
+export { SavingAccountModel };

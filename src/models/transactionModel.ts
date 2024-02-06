@@ -1,15 +1,12 @@
 import { Schema, model } from "mongoose";
-import { Transaction } from "../classes/Transaction";
 
-type TransactionSchema = Transaction;
-
-export const transactionSchema = new Schema<TransactionSchema>(
+export const transactionSchema = new Schema(
   {
     transactionId: { type: String },
     amount: { type: Number },
     type: {
       type: String,
-      enum: ["transfer", "deposit", "withdraw", "receive"],
+      enum: ["transfer", "deposit", "withdraw", "receive", "repayment"],
     },
     performedAt: { type: Date },
   },
@@ -18,6 +15,6 @@ export const transactionSchema = new Schema<TransactionSchema>(
   }
 );
 
-const TransactionModel = model<TransactionSchema>("User", transactionSchema);
+const TransactionModel = model("Transaction", transactionSchema);
 
 export { TransactionModel };

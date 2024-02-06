@@ -1,12 +1,6 @@
 import { Schema, model } from "mongoose";
-import { User } from "../classes/User";
 
-import { CreditCard } from "../classes/CreditCard";
-import { CreditScore } from "../classes/CreditScore";
-
-type UserSchema = User;
-
-export const userSchema = new Schema<UserSchema>(
+export const userSchema = new Schema(
   {
     id: { type: String },
     firstName: { type: String },
@@ -14,15 +8,15 @@ export const userSchema = new Schema<UserSchema>(
     email: { type: String },
     phoneNumber: { type: String },
     address: { type: String },
-    dateOfBirth: { type: Date },
-    creditCard: { type: CreditCard },
-    creditScore: { type: CreditScore },
+    dateOfBirth: { type: String },
+    creditCard: { type: Schema.Types.ObjectId, ref: "CreditCard" },
+    creditScore: { type: Schema.Types.ObjectId, ref: "CreditScore" },
   },
   {
     collection: "users",
   }
 );
 
-const UserModel = model<UserSchema>("User", userSchema);
+const UserModel = model("User", userSchema);
 
 export { UserModel };

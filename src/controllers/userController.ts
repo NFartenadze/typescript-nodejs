@@ -1,31 +1,71 @@
 import express from "express";
-
-import { deleteUserById, getUserById, getUsers } from "../db/users";
+import { UserModel } from "../models/userModel";
+import logger from "../helpers/logger";
 
 export const getAllUsers = async (
   req: express.Request,
   res: express.Response
 ) => {
   try {
-    const users = await getUsers();
+    const users = await UserModel.find();
+    if (!users) {
+      return res.status(404).json({ message: "No Users Found" });
+    }
     return res.status(200).json(users);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
-
-export const deleteUsers = async (
+export const getSpecificUser = async (
   req: express.Request,
   res: express.Response
 ) => {
   try {
     const { id } = req.params;
-    const deletedUser = await deleteUserById(id);
+    const user = await UserModel.findOne({ _id: id });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json(user);
+  } catch (error) {
+    logger.error(error);
+    return res.sendStatus(400);
+  }
+};
+
+export const createNewUser = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const user = await UserModel.create(req.body);
+    return res.status(201).json(user);
+  } catch (error) {
+    logger.error(error);
+    return res.sendStatus(400);
+  }
+};
+
+export const deleteUser = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    // Check if user exists
+    const user = await UserModel.findOne({ _id: id });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    console.log(user);
+
+    const deletedUser = await UserModel.findOneAndDelete({ _id: id });
     return res.json(deletedUser);
   } catch (error) {
-    console.log(error);
-    return res.sendStatus(400);
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -35,17 +75,14 @@ export const updateUser = async (
 ) => {
   try {
     const { id } = req.params;
-
-    const { firstName } = req.body;
-    if (!firstName) {
-      return res.sendStatus(400);
-    }
-    const user = await getUserById(id);
-    user!.firstName = firstName;
-
-    return res.status(200).json(user).end();
+    const updatedUser = await UserModel.findOneAndUpdate(
+      { _id: id },
+      req.body,
+      { new: true }
+    );
+    return res.status(201).json(updateUser);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };

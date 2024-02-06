@@ -1,6 +1,4 @@
-import { Document, Schema, model } from "mongoose";
-import { accountSchema } from "./accountModel";
-import { userSchema } from "./userModel";
+import { Schema, model } from "mongoose";
 
 const bankSchema = new Schema(
   {

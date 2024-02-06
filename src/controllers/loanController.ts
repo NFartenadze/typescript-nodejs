@@ -1,5 +1,6 @@
 import express from "express";
 import { LoanModel } from "../models/loanModel";
+import logger from "../helpers/logger";
 
 export const getAllLoans = async (
   req: express.Request,
@@ -9,7 +10,7 @@ export const getAllLoans = async (
     const loans = await LoanModel.find();
     return res.status(200).json(loans);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -22,7 +23,7 @@ export const getSpecificLoan = async (
     const loans = await LoanModel.findOne({ _id: id });
     return res.status(200).json(loans);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -36,7 +37,7 @@ export const createNewLoan = async (
     const loan = await LoanModel.create(req.body);
     return res.status(201).json(loan);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -50,13 +51,13 @@ export const deleteLoan = async (
 
     const loan = await LoanModel.findOne({ _id: id });
     if (!loan) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "Loan not found" });
     }
     console.log(loan);
     const deletedLoan = await LoanModel.findOneAndDelete({ _id: id });
     return res.json(deletedLoan);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -74,7 +75,7 @@ export const updateLoan = async (
     );
     return res.status(200).json(updatedLoan);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };

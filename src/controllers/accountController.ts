@@ -1,5 +1,6 @@
 import express from "express";
 import { AccountModel } from "../models/accountModel";
+import logger from "../helpers/logger";
 
 export const getAllAccounts = async (
   req: express.Request,
@@ -9,7 +10,7 @@ export const getAllAccounts = async (
     const accounts = await AccountModel.find();
     return res.status(200).json(accounts);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -21,7 +22,7 @@ export const createNewAccount = async (
     const account = await AccountModel.create(req.body);
     return res.status(201).json(account);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -38,7 +39,7 @@ export const getSpecificAccount = async (
     }
     return res.status(200).json(account);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };

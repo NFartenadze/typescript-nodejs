@@ -1,5 +1,6 @@
 import express from "express";
 import { CreditScoreModel } from "../models/creditScoreModel";
+import logger from "../helpers/logger";
 
 export const getAllCreditScores = async (
   req: express.Request,
@@ -9,7 +10,7 @@ export const getAllCreditScores = async (
     const creditScores = await CreditScoreModel.find();
     return res.status(200).json(creditScores);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -23,7 +24,7 @@ export const getSpecificCreditScore = async (
     const creditScores = await CreditScoreModel.findOne({ _id: id });
     return res.status(200).json(creditScores);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -35,7 +36,7 @@ export const createNewCreditScore = async (
     const creditScore = await CreditScoreModel.create(req.body);
     return res.status(201).json(creditScore);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -50,7 +51,7 @@ export const deleteCreditScore = async (
     // Check if CreditScore exists
     const creditScore = await CreditScoreModel.findOne({ _id: id });
     if (!creditScore) {
-      return res.status(404).json({ message: "CreditScore not found" });
+      return res.status(404).json({ message: "Credit Score not found" });
     }
 
     const deletedCreditScore = await CreditScoreModel.findOneAndDelete({
@@ -76,7 +77,7 @@ export const updateCreditScore = async (
     );
     return res.status(200).json(updatedCreditScore);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };

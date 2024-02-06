@@ -1,5 +1,6 @@
 import express from "express";
 import { UserModel } from "../models/userModel";
+import logger from "../helpers/logger";
 
 export const getAllUsers = async (
   req: express.Request,
@@ -12,7 +13,7 @@ export const getAllUsers = async (
     }
     return res.status(200).json(users);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -28,7 +29,7 @@ export const getSpecificUser = async (
     }
     return res.status(200).json(user);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -41,7 +42,7 @@ export const createNewUser = async (
     const user = await UserModel.create(req.body);
     return res.status(201).json(user);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -81,7 +82,7 @@ export const updateUser = async (
     );
     return res.status(201).json(updateUser);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };

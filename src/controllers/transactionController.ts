@@ -1,5 +1,6 @@
 import express from "express";
 import { TransactionModel } from "../models/transactionModel";
+import logger from "../helpers/logger";
 
 export const getAllTransactions = async (
   req: express.Request,
@@ -9,7 +10,7 @@ export const getAllTransactions = async (
     const transactions = await TransactionModel.find();
     return res.status(200).json(transactions);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -23,7 +24,7 @@ export const getSpecificTransaction = async (
     const transaction = await TransactionModel.findOne({ _id: id });
     return res.status(200).json(transaction);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -36,7 +37,7 @@ export const createNewTransaction = async (
     const transaction = await TransactionModel.create(req.body);
     return res.status(201).json(transaction);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -50,7 +51,7 @@ export const deleteTransaction = async (
 
     const transaction = await TransactionModel.findOne({ _id: id });
     if (!transaction) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "Transaction not found" });
     }
     console.log(transaction);
     const deletedTransaction = await TransactionModel.findOneAndDelete({
@@ -58,7 +59,7 @@ export const deleteTransaction = async (
     });
     return res.json(deletedTransaction);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -77,7 +78,7 @@ export const updateTransaction = async (
     );
     return res.status(200).json(updatedTransaction);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };

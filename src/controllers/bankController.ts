@@ -1,5 +1,6 @@
 import express from "express";
 import { BankModel } from "../models/bankModel";
+import logger from "../helpers/logger";
 
 export const getAllBanks = async (
   req: express.Request,
@@ -9,7 +10,7 @@ export const getAllBanks = async (
     const banks = await BankModel.find();
     return res.status(200).json(banks);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -22,7 +23,7 @@ export const createNewBank = async (
     const bank = await BankModel.create(req.body);
     return res.status(201).json(bank);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -36,7 +37,7 @@ export const getSpecificBank = async (
     const bank = await BankModel.findOne({ name });
     return res.status(201).json(bank);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -47,11 +48,10 @@ export const deleteBank = async (
 ) => {
   try {
     const { name } = req.params;
-    console.log(name);
     // Check if bank exists
     const bank = await BankModel.findOne({ name });
     if (!bank) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "Bank not found" });
     }
     console.log(bank);
     const deletedUser = await BankModel.findOneAndDelete({ name });

@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createNewCreditCard,
+  deleteCreditCard,
   getAllCreditCards,
   getSpecificCreditCard,
   updateCreditCard,
@@ -11,7 +12,7 @@ const router = express.Router();
 router.get("/", getAllCreditCards);
 router.get("/:userId", getSpecificCreditCard);
 router.post("/", createNewCreditCard);
-router.delete("/:userId", createNewCreditCard);
+router.delete("/:id", deleteCreditCard);
 router.put("/:userId", updateCreditCard);
 
 export default router;

@@ -1,6 +1,7 @@
 import express from "express";
 
 import { CreditCardModel } from "../models/creditCardModel";
+import logger from "../helpers/logger";
 
 export const getAllCreditCards = async (
   req: express.Request,
@@ -10,7 +11,7 @@ export const getAllCreditCards = async (
     const creditCards = await CreditCardModel.find();
     return res.status(200).json(creditCards);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -23,7 +24,7 @@ export const createNewCreditCard = async (
     const creditCard = await CreditCardModel.create(req.body);
     return res.status(201).json(creditCard);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -34,10 +35,10 @@ export const getSpecificCreditCard = async (
 ) => {
   try {
     const { userId } = req.params;
-    const creditCard = await CreditCardModel.findOne({ userId });
+    const creditCard = await CreditCardModel.findOne({ user: userId });
     return res.status(200).json(creditCard);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -46,19 +47,18 @@ export const deleteCreditCard = async (
   res: express.Response
 ) => {
   try {
-    const { userId } = req.params;
+    const { id } = req.params;
 
-    const creditCard = await CreditCardModel.findOne({ userId });
+    const creditCard = await CreditCardModel.findOne({ _id: id });
     if (!creditCard) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "Credit Card not found" });
     }
-    console.log(creditCard);
     const deletedCreditCard = await CreditCardModel.findOneAndDelete({
-      userId,
+      _id: id,
     });
     return res.json(deletedCreditCard);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -70,13 +70,13 @@ export const updateCreditCard = async (
   try {
     const { userId } = req.params;
     const updatedCreditCard = await CreditCardModel.findOneAndUpdate(
-      { userId },
+      { user: userId },
       req.body,
       { new: true }
     );
     return res.json(updatedCreditCard);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };

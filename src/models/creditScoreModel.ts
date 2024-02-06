@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 export const creditScoreSchema = new Schema(
   {
-    user: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    user: { type: Schema.Types.ObjectId, ref: "User" },
     score: { type: Number },
   },
   {

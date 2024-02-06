@@ -1,5 +1,6 @@
 import express from "express";
 import { SavingAccountModel } from "../models/savingAccountModel";
+import logger from "../helpers/logger";
 
 export const getAllSavingAccounts = async (
   req: express.Request,
@@ -9,7 +10,7 @@ export const getAllSavingAccounts = async (
     const savingAccounts = await SavingAccountModel.find();
     return res.status(200).json(savingAccounts);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -25,7 +26,7 @@ export const getSpecificSavingAccount = async (
     });
     return res.status(200).json(savingAccounts);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -38,7 +39,7 @@ export const createNewSavingAccount = async (
     const savingAccount = await SavingAccountModel.create(req.body);
     return res.status(201).json(savingAccount);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -54,7 +55,7 @@ export const deleteSavingAccount = async (
       accountNumber: number,
     });
     if (!savingAccount) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "Saving Account not found" });
     }
     console.log(savingAccount);
     const deletedSavingAccount = await SavingAccountModel.findOneAndDelete({
@@ -62,7 +63,7 @@ export const deleteSavingAccount = async (
     });
     return res.json(deletedSavingAccount);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
@@ -80,7 +81,7 @@ export const updateSavingAccount = async (
     );
     return res.status(200).json(updatedSavingAccount);
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return res.sendStatus(400);
   }
 };
